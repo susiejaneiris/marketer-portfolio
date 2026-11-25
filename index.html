@@ -1,0 +1,870 @@
+<!DOCTYPE html>
+<html lang="ko" class="js">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>강윤경 포트폴리오</title>
+<meta name="description" content="데이터로 인사이트를 찾고, 생성형 AI로 콘텐츠를 만드는 마케터 강윤경의 포트폴리오">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* VOICE: 채용 담당자가 읽는 성과 보고서. 정확하고 차분하게, 근거가 먼저
+   IDEA: 월간 마케팅 성과 리포트 — 모든 수치에 비교 기준과 출처가 붙는다
+   PICTURE: 첫 화면의 블로그 일 평균 조회수 라인 차트 하나, 프로젝트마다 실제 수치로 그린 도표 하나
+   SIGNATURE: 수치마다 붙는 비교 기준·출처 각주 / accent는 핵심 값 하나에만
+   COLOUR and TYPE: 잉크 톤 뉴트럴 + PDF 포트폴리오의 코발트 #1f5bff를 강조색으로만 / IBM Plex Sans KR + IBM Plex Mono(수치·각주)
+   LAYOUT: 분할 히어로 → 지표 4개 → 소개·타임라인 → 프로젝트 목차와 9개 → 역량 → 다짐 → 연락처
+   Unslop pass by unslop (Damir Sokolovsky, @heydamir, CC BY 4.0) */
+:root{color-scheme:light dark;
+--bg:light-dark(#f5f7fa,#0b0d14);--card:light-dark(#ffffff,#11141c);--raised:light-dark(#eceff4,#1a1e28);
+--ink:light-dark(#111827,#eef0f5);--sub:light-dark(#4b5565,#a3a9b8);--mute:light-dark(#6b7487,#7a8296);
+--line:color-mix(in srgb,var(--ink) 9%,transparent);
+--acc:light-dark(#1f4fe0,#7b9bff);--bar:light-dark(#c8d0de,#2c3344);--ease:cubic-bezier(.22,1,.36,1)}
+:root[data-theme=light]{color-scheme:light}:root[data-theme=dark]{color-scheme:dark}
+*{box-sizing:border-box;min-width:0}
+html{scroll-padding-top:72px}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.7 "IBM Plex Sans KR",system-ui,"Apple SD Gothic Neo",sans-serif;overflow-x:clip;word-break:keep-all}
+a{color:inherit}
+.wrap{max-width:1200px;margin:0 auto;padding:0 max(5vw,16px)}
+section{padding:clamp(64px,6vw,96px) 0}
+h1,h2,h3{margin:0;font-weight:500;text-wrap:balance}
+h1{font-size:clamp(34px,3.6vw,48px);line-height:1.18;letter-spacing:-.02em}
+h2{font-size:clamp(28px,3vw,36px);line-height:1.2}
+h3{font-size:20px;line-height:1.35}
+p{margin:0}
+.sub{color:var(--sub)}
+.mono{font-family:"IBM Plex Sans KR",system-ui,sans-serif;font-size:12px;color:var(--mute);font-variant-numeric:tabular-nums;letter-spacing:0}
+.lead{color:var(--sub);max-width:36rem;margin-top:12px}
+:focus-visible{outline:2px solid var(--acc);outline-offset:2px;border-radius:4px}
+
+nav{position:sticky;top:0;z-index:5;background:color-mix(in srgb,var(--bg) 90%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;gap:24px;height:56px}
+nav .logo{font-weight:600;flex:none;text-decoration:none}
+nav .links{display:flex;gap:4px;margin-left:auto;overflow-x:auto;scrollbar-width:none}
+nav .links a{flex:none;text-decoration:none;color:var(--sub);font-size:14px;padding:8px 12px;border-radius:8px;transition:color .15s var(--ease),background-color .15s var(--ease)}
+nav .links a:hover{color:var(--ink);background:var(--raised)}
+
+.btn{display:inline-flex;align-items:center;height:44px;padding:0 20px;border-radius:10px;font:500 15px "IBM Plex Sans KR",sans-serif;text-decoration:none;cursor:pointer;border:1px solid transparent;transition:background-color .15s var(--ease),transform .12s var(--ease)}
+.btn:active{transform:scale(.98)}
+.btn.p{background:var(--ink);color:var(--bg)}
+.btn.s{background:var(--card);border-color:var(--line);color:var(--ink)}
+.btn.s:hover{background:var(--raised)}
+
+.fig{position:relative;min-height:240px;margin-top:16px}.fig>svg{position:absolute;inset:0;width:100%;height:100%}
+
+
+.actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:32px}
+.cover{padding:16px 0 0}
+.cmeta{display:flex;flex-wrap:wrap;gap:4px 24px;justify-content:space-between;font-family:"IBM Plex Sans KR",sans-serif;font-variant-numeric:tabular-nums;font-size:12px;color:var(--mute);padding-bottom:16px;border-bottom:1px solid var(--line)}
+.cmeta a{text-decoration:none}.cmeta a:hover{color:var(--acc)}
+.cgrid{display:grid;grid-template-columns:minmax(220px,320px) minmax(0,1fr);gap:clamp(32px,6vw,88px);padding:56px 0 40px;align-items:start}
+.portrait{margin:0;position:sticky;top:88px}
+.pimg{border-radius:20px;overflow:hidden;aspect-ratio:600/732;background:var(--raised);box-shadow:0 24px 48px -28px rgba(10,20,50,.35)}
+.pimg img{width:100%;height:100%;object-fit:cover;display:block}
+.portrait figcaption{display:grid;gap:2px;margin-top:16px;font-size:14px;color:var(--sub)}
+.portrait figcaption b{font-size:24px;font-weight:500;color:var(--ink);margin-bottom:4px}
+.kicker{font-size:14px;color:var(--sub);font-weight:500;margin-bottom:20px}
+.ctext h1{font-size:clamp(34px,4.6vw,60px);line-height:1.14;letter-spacing:-.025em}
+.ctext .lead{font-size:18px;line-height:1.7;margin-top:24px;max-width:38rem}
+.cstats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));margin-top:48px;border-top:1px solid var(--ink)}
+.cstats div{padding:16px 16px 0 0}
+.cstats div+div{padding-left:16px;border-left:1px solid var(--line)}
+.cstats b{display:block;font-size:clamp(24px,2.4vw,32px);font-weight:500;line-height:1.2;font-variant-numeric:tabular-nums;white-space:nowrap}
+.cstats span{font-size:13px;color:var(--sub);display:block;margin-top:4px;line-height:1.45}
+.band{background:var(--card);border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:56px 0 32px}
+.bhead{display:flex;justify-content:space-between;align-items:flex-end;gap:16px 40px;flex-wrap:wrap}
+.btitle{font-size:clamp(22px,2.4vw,30px);font-weight:500;margin-top:8px;line-height:1.3}
+.btitle b{font-weight:500;color:var(--acc);white-space:nowrap}
+.dtag{display:inline-block;font-size:.62em;font-weight:500;color:var(--card);background:var(--acc);border-radius:6px;padding:2px 10px;vertical-align:.25em;margin-right:4px}
+.bnote{font-size:14px;color:var(--sub);text-align:right}
+.bigfig{min-height:300px;margin-top:24px}
+.about{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:48px;margin-top:40px}
+.journey{margin-top:40px;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px}
+.jtop{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:16px}
+.strengths{margin-top:40px}
+.sgrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.sc{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px;display:flex;flex-direction:column}
+.snum{font-size:32px;font-weight:500;line-height:1.1;color:var(--ink);font-variant-numeric:tabular-nums;letter-spacing:-.01em}
+.snum span{color:var(--mute);font-weight:400}
+.sc h3{font-size:19px;margin-top:20px}
+.sdesc{font-size:15px;color:var(--sub);margin-top:8px;line-height:1.6;flex:1}
+.stools{font-family:"IBM Plex Sans KR",sans-serif;font-variant-numeric:tabular-nums;font-size:12px;color:var(--mute);margin-top:16px;padding-top:16px;border-top:1px solid var(--line)}
+.slinks{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.slinks a{font-size:13px;text-decoration:none;color:var(--ink);padding:6px 10px;border-radius:8px;background:var(--raised);transition:background-color .15s var(--ease),color .15s var(--ease)}
+.slinks a:hover{color:var(--acc)}
+.edu-top{margin:0 0 48px;justify-items:start}
+.edu-top .mono{justify-self:end}
+.edu{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:10px 20px;align-items:baseline;margin-top:24px;padding:16px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);font-size:15px}
+@media(max-width:960px){.sgrid{grid-template-columns:minmax(0,1fr)}.sc{padding:20px}.sc h3{margin-top:12px}}
+@media(max-width:600px){.edu{grid-template-columns:minmax(0,1fr) auto}.edu .lbl{grid-column:1/-1;margin-top:8px!important}}
+.mix,.mixd{display:grid;grid-template-columns:6fr 6fr 10fr 12fr;gap:4px}
+.seg{position:relative;overflow:hidden;height:72px;border-radius:10px;background:var(--raised);padding:12px 14px;display:flex;flex-direction:column;justify-content:space-between;min-width:0}
+.seg b{font-weight:500;font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;position:relative}
+.seg span{font-size:12px;color:var(--sub);font-family:"IBM Plex Sans KR",sans-serif;font-variant-numeric:tabular-nums;position:relative}
+.seg.on{background:var(--acc);color:light-dark(#fff,#0b1020)}
+.seg.on span{color:light-dark(rgba(255,255,255,.82),rgba(11,16,32,.75))}
+.seg.now{background:repeating-linear-gradient(135deg,color-mix(in srgb,var(--acc) 22%,var(--card)) 0 6px,color-mix(in srgb,var(--acc) 12%,var(--card)) 6px 12px);color:var(--ink)}
+.seg.now span{color:light-dark(rgba(255,255,255,.85),rgba(11,16,32,.78))}
+.seg.now .done{position:absolute;inset:0 auto 0 0;width:41.7%;background:var(--acc)}
+.seg.now b{color:light-dark(#fff,#0b1020)}
+.mixd{margin-top:20px;gap:24px 4px}
+.mixd>div{padding:0 16px 0 0;border-top:2px solid var(--bar);padding-top:14px}
+.mixd>div.on{border-top-color:var(--acc)}
+.mixd h3{font-size:17px;margin-top:6px}
+.mixd .role{font-size:13px;color:var(--sub);margin-top:2px}
+.mixd .what{font-size:14px;line-height:1.6;margin-top:10px}
+.mixd .mono{font-size:12px}
+/* motion */
+.marquee{overflow:hidden;border-bottom:1px solid var(--line);background:var(--bg);padding:18px 0;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.mq-track{display:flex;align-items:center;gap:24px;width:max-content;animation:mq 48s linear infinite}
+.marquee:hover .mq-track{animation-play-state:paused}
+.mq-track span{font-size:clamp(18px,2vw,24px);font-weight:500;white-space:nowrap;color:var(--sub)}
+.mq-track span:nth-of-type(4n+1){color:var(--ink)}
+.mq-track i{width:6px;height:6px;border-radius:50%;background:var(--acc);flex:none}
+@keyframes mq{to{transform:translateX(-50%)}}
+.js [data-rv]{opacity:0;transition:opacity .9s var(--ease),transform 1s var(--ease);transition-delay:var(--d,0ms)}
+.js [data-rv=up]{transform:translateY(28px)}
+.js [data-rv=left]{transform:translateX(-40px)}
+.js [data-rv=right]{transform:translateX(40px)}
+.js [data-rv=fade]{transform:none}
+.js [data-rv].shown{opacity:1;transform:none}
+.pimg{will-change:transform}
+.pimg img{transform:none}
+/* career easing */
+.mvj .seg{clip-path:inset(0 100% 0 0 round 10px);transition:clip-path 1s cubic-bezier(.77,0,.18,1)}
+.mvj.in .seg{clip-path:inset(0 0 0 0 round 10px)}
+.mvj .seg b,.mvj .seg span{opacity:0;transform:translateY(8px);transition:opacity .5s var(--ease),transform .6s cubic-bezier(.34,1.56,.64,1);transition-delay:inherit}
+.mvj.in .seg b,.mvj.in .seg span{opacity:1;transform:none}
+.mvj .seg.now .done{transform:scaleX(0);transform-origin:left;transition:transform 1.4s cubic-bezier(.65,0,.35,1)}
+.mvj.in .seg.now .done{transform:none}
+.mvj .mixd>div{opacity:0;transform:translateY(20px);transition:opacity .7s var(--ease),transform .8s cubic-bezier(.22,1,.36,1)}
+.mvj.in .mixd>div{opacity:1;transform:none}
+.mvj .mixd>div::before{content:"";display:block;height:2px;margin-top:-16px;margin-bottom:14px;background:var(--acc);transform:scaleX(0);transform-origin:left;transition:transform .9s cubic-bezier(.77,0,.18,1);transition-delay:inherit}
+.mvj.in .mixd>div.on::before{transform:scaleX(1)}
+.mvj .mixd>div:not(.on)::before{display:none}
+.mvj .mixd>div.on{border-top-color:var(--bar)}
+@media(prefers-reduced-motion:reduce){.mq-track{animation:none;flex-wrap:wrap;width:auto;padding:0 5vw}.js [data-rv]{opacity:1!important;transform:none!important;transition:none!important}.pimg img{transform:none!important}}
+@media(max-width:960px){
+ .mixd{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:24px 20px}
+ .seg b{font-size:13px}
+}
+@media(max-width:600px){
+ .seg{height:56px;padding:8px 8px;border-radius:8px}
+ .seg b{display:none}
+ .seg span{font-size:11px;white-space:nowrap}
+ .seg.now .done{width:60%}
+ .mixd{grid-template-columns:minmax(0,1fr);gap:20px}
+}
+.rowlist{list-style:none;margin:0;padding:0}
+.rowlist li{display:grid;grid-template-columns:9.5em minmax(0,1fr);gap:16px;padding:16px 0;border-top:1px solid var(--line)}
+.rowlist small{display:block;color:var(--sub);font-size:14px;margin-top:2px}
+.lbl{font-size:14px;color:var(--mute);margin-bottom:12px}
+.str{padding:16px 0;border-top:1px solid var(--line)}
+.str p{color:var(--sub);font-size:15px;margin-top:4px}
+
+.index{list-style:none;margin:48px 0 0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.index a{display:flex;flex-direction:column;height:100%;padding:24px;border-radius:16px;background:var(--card);border:1px solid var(--line);text-decoration:none;transition:border-color .2s var(--ease),transform .25s var(--ease),box-shadow .25s var(--ease)}
+.index a:hover{border-color:var(--acc);transform:translateY(-4px);box-shadow:0 16px 32px -20px rgba(20,40,120,.4)}
+.index .is{display:flex;flex-direction:column;gap:2px;padding-bottom:16px;border-bottom:1px solid var(--line)}
+.index .is b{font-size:clamp(28px,2.6vw,34px);font-weight:500;line-height:1.1;color:var(--ink);font-variant-numeric:tabular-nums;white-space:nowrap}
+.index .is span{font-size:13px;color:var(--sub)}
+.index .it{font-size:18px;font-weight:500;line-height:1.4;margin-top:16px}
+.index .id{font-size:14px;color:var(--sub);line-height:1.6;margin-top:8px;flex:1;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.index .im{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-top:20px;font-family:"IBM Plex Sans KR",sans-serif;font-variant-numeric:tabular-nums;font-size:12px;color:var(--mute)}
+.index .go{font-family:"IBM Plex Sans KR",sans-serif;font-size:13px;font-weight:500;color:var(--ink);padding:6px 12px;border-radius:999px;background:var(--raised);transition:background-color .2s var(--ease),color .2s var(--ease)}
+.index a:hover .go{background:var(--acc);color:light-dark(#fff,#0b1020)}
+.index a:hover .it{color:var(--acc)}
+.index a.cur{border-color:var(--acc)}
+body[data-view=projects] .cover,body[data-view=projects] #about,body[data-view=projects] #skills,body[data-view=projects] #vision,body[data-view=projects] #contact,body[data-view=projects] #viewsband{display:none}
+body:not([data-view=projects]) .pback{display:none}
+body[data-view=projects] .links a[href="#projects"]{color:var(--ink);background:var(--raised)}
+body[data-view=projects] #projects{padding-top:48px}
+body[data-view=projects] .index{grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:8px}
+body[data-view=projects] .index a{padding:14px 16px}
+body[data-view=projects] .index .is,body[data-view=projects] .index .id,body[data-view=projects] .index .go{display:none}
+body[data-view=projects] .index .im{order:-1;margin:0}
+body[data-view=projects] .index .it{font-size:15px;margin-top:6px}
+.pdx{grid-column:1/-1;display:grid;grid-template-rows:0fr;opacity:0;transition:grid-template-rows .5s var(--ease),opacity .4s var(--ease)}
+.pdx.open{grid-template-rows:1fr;opacity:1}
+.pdx-in{overflow:hidden;min-height:0}
+.pdx-box{position:relative;margin:4px 0 8px;background:var(--card);border:1px solid var(--acc);border-radius:20px;padding:64px clamp(20px,3vw,36px) clamp(20px,3vw,36px)}
+.pdx-box .pj{padding:0;border:0;margin:0!important;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr)}
+.pdx-box .viz{background:var(--bg)}
+.pdx-close{position:absolute;top:16px;right:16px;z-index:2;font:500 13px "IBM Plex Sans KR",sans-serif;padding:8px 12px;border-radius:999px;border:1px solid var(--line);background:var(--raised);color:var(--ink);cursor:pointer}
+.pdx-close:hover{border-color:var(--acc);color:var(--acc)}
+@media(max-width:960px){.pdx-box .pj{grid-template-columns:minmax(0,1fr)}}
+@media(max-width:600px){.pdx-box{padding:52px 16px 20px}.pdx-close{top:12px;right:12px}}
+.pjump{display:flex;flex-wrap:wrap;gap:8px;margin-top:28px}
+.pjump a{display:inline-flex;align-items:center;gap:8px;height:40px;padding:0 16px;border-radius:999px;border:1px solid var(--line);background:var(--card);text-decoration:none;font-size:14px;font-weight:500;transition:border-color .2s var(--ease)}
+.pjump a:hover{border-color:var(--acc)}
+.pjump span{font-size:12px;color:var(--mute);font-variant-numeric:tabular-nums}
+.pgh{margin-top:64px;padding:28px 0 8px;border-top:2px solid var(--ink)}
+.pgh+.pj{padding-top:40px}
+.pgk{font-size:13px;color:var(--acc);font-weight:500}
+.pgh h3{font-size:clamp(24px,2.6vw,30px);margin-top:6px}
+.pgd{font-size:15px;color:var(--sub);margin-top:8px;max-width:44rem}
+#grp-edu{margin-top:96px}
+.pback{display:inline-flex;align-items:center;gap:6px;font-size:14px;color:var(--sub);text-decoration:none;margin-bottom:16px}
+.pback:hover{color:var(--acc)}
+@media(max-width:960px){.index{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:600px){.index{grid-template-columns:minmax(0,1fr)}.index a{padding:20px}body[data-view=projects] .index{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}body[data-view=projects] .index .im span:last-child{display:none}}
+.pj{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:48px;padding:80px 0;border-bottom:1px solid var(--line)}
+.pj:first-of-type{margin-top:24px}
+.pj .meta{display:flex;flex-wrap:wrap;gap:4px 16px}
+.pj h3{font-size:clamp(22px,2.2vw,26px);margin:12px 0}
+.pj .desc{color:var(--sub)}
+.kv{display:flex;flex-wrap:wrap;gap:16px 40px;margin:24px 0 0}
+.kv b{display:block;font-size:28px;font-weight:500;line-height:1.2;font-variant-numeric:tabular-nums;white-space:nowrap}
+.kv span{font-size:13px;color:var(--sub)}
+dl{display:grid;grid-template-columns:5em minmax(0,1fr);gap:8px 16px;margin:24px 0 0;font-size:15px}
+dt{color:var(--mute)}dd{margin:0}
+.qa{display:grid;gap:12px;margin-top:24px;font-size:15px}
+.qa span{display:block;color:var(--sub)}
+.tags{margin-top:20px;font-size:13px;color:var(--mute);font-family:"IBM Plex Sans KR",sans-serif;font-variant-numeric:tabular-nums}
+.learn{margin-top:24px;padding-left:16px;border-left:2px solid var(--line);font-size:15px}
+.learn small{display:block;font-size:13px;color:var(--mute)}
+.org{margin-top:16px}
+
+.viz{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px}
+.viz+.viz{margin-top:12px}
+.vt{font-size:14px;font-weight:500;margin-bottom:16px}
+.vt2{font-size:14px;font-weight:500;margin:24px 0 12px}
+.vn{margin-top:16px}
+.hb{display:grid;gap:8px}
+.hr{display:grid;grid-template-columns:8.5em minmax(0,1fr) 5.5em;gap:12px;align-items:center;font-size:14px}
+.hr b{font-weight:500;text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums}
+.track{height:12px;border-radius:3px;overflow:hidden}
+.track i{display:block;height:100%;border-radius:3px;background:var(--bar)}
+.track i.on{background:var(--acc)}
+.pj>div:last-child{display:flex;flex-direction:column}
+.viz.fill{flex:1;display:flex;flex-direction:column}
+.pains3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.pains3 div{background:var(--raised);border-radius:10px;padding:12px}
+.pains3 em{display:block;font-style:normal;font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--acc)}
+.pains3 b{display:block;font-size:14px;font-weight:500;margin-top:4px;line-height:1.35}
+.ck>.ball,.ck>.trio{margin-block:calc((var(--H) - var(--s))/2)!important}
+.chain{--H:104px;display:flex;align-items:flex-start;justify-content:space-between;gap:0;flex:1;align-content:center;padding:12px 0 4px}
+.ck{display:flex;flex-direction:column;align-items:center;text-align:center;flex:none;width:clamp(64px,20%,112px)}
+.ball{--s:96px;width:var(--s);height:var(--s);border-radius:50%;display:grid;place-content:center;background:var(--raised);border:1px solid var(--line)}
+.ball b{font-size:15px;font-weight:500;line-height:1.2;font-variant-numeric:tabular-nums}
+.ball span{font-size:11px;color:var(--sub)}
+.b1{--s:104px}.b1 b{font-size:17px}
+.b2{--s:80px;margin-top:12px}
+.b4{--s:92px;margin-top:6px;background:var(--acc);border-color:var(--acc)}
+.b4 b{font-size:19px;color:light-dark(#fff,#0b1020)}.b4 span{color:light-dark(rgba(255,255,255,.85),rgba(11,16,32,.75))}
+.trio{--s:104px;width:80px;height:104px;position:relative}
+.trio i{position:absolute;width:38px;height:38px;border-radius:50%;display:grid;place-items:center;font-style:normal;font-family:"IBM Plex Mono",monospace;font-size:12px;background:var(--card);border:1.5px solid var(--acc);color:var(--acc)}
+.trio i:nth-child(1){left:21px;top:14px}.trio i:nth-child(2){left:2px;top:50px}.trio i:nth-child(3){left:40px;top:50px}
+.cs{font-size:13px;font-weight:500;margin-top:12px}.cs.on{color:var(--acc)}
+.cd{font-size:12px;color:var(--sub);margin-top:2px;line-height:1.4}
+.cl{flex:1;height:2px;background:var(--bar);margin-top:51px;position:relative;min-width:8px}
+.cl::after{content:"";position:absolute;right:-1px;top:-4px;border:5px solid transparent;border-left:7px solid var(--bar);border-right:0}
+.cl.on{background:var(--acc)}.cl.on::after{border-left-color:var(--acc)}
+.cl span{position:absolute;top:8px;left:50%;transform:translateX(-50%);font-size:11px;color:var(--acc);white-space:nowrap}
+.mv .ball,.mv .trio{transform:scale(.4);opacity:0;transition:transform .6s cubic-bezier(.34,1.56,.64,1),opacity .4s var(--ease)}
+.mv .ck:nth-child(3) .ball{transition-delay:.2s}.mv .ck:nth-child(5) .trio{transition-delay:.4s}.mv .ck:nth-child(7) .ball{transition-delay:.65s}
+.mv.in .ball,.mv.in .trio{transform:none;opacity:1}
+.mv .cl{transform:scaleX(0);transform-origin:left;transition:transform .4s var(--ease)}
+.mv .cl:nth-child(2){transition-delay:.1s}.mv .cl:nth-child(4){transition-delay:.3s}.mv .cl:nth-child(6){transition-delay:.55s}
+.mv.in .cl{transform:none}
+@media(max-width:600px){.b1{--s:72px}.b1 b{font-size:14px}.b2{--s:58px;margin-top:7px}.b2 b{font-size:12px}.b4{--s:66px;margin-top:3px}.b4 b{font-size:15px}.ball span{font-size:10px}
+ .chain{--H:72px}.trio{--s:72px;width:58px;height:72px}.trio i{width:28px;height:28px;font-size:11px}.trio i:nth-child(1){left:15px;top:8px}.trio i:nth-child(2){left:1px;top:36px}.trio i:nth-child(3){left:29px;top:36px}
+ .cl{margin-top:35px}.cl span{font-size:10px}.cd{font-size:11px}}
+@media(max-width:600px){.pains3{grid-template-columns:minmax(0,1fr)}.pains3 div{display:flex;gap:10px;align-items:baseline;padding:10px 12px}.pains3 b{margin:0}}
+.sig{display:grid;gap:0}
+.sr{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.8fr) minmax(0,1.3fr);gap:12px;align-items:center;padding:12px 0;border-top:1px solid var(--line);font-size:13px}
+.sr:first-child{border-top:0;padding-top:0}
+.s1 b{font-weight:500;font-size:14px}
+.s2{display:flex;align-items:center;gap:6px;color:var(--sub);white-space:nowrap}
+.dir{display:inline-grid;place-items:center;width:22px;height:22px;border-radius:6px;font-size:10px}
+.dir.up{background:color-mix(in srgb,var(--acc) 14%,transparent);color:var(--acc)}
+.dir.down{background:light-dark(#fde8e8,#3a1d22);color:light-dark(#c0392b,#f28b82)}
+.s3{color:var(--ink);line-height:1.5}
+.fan{display:flex;flex-direction:column;align-items:center;gap:0}
+.fn{font-size:13px;font-weight:500;text-align:center;padding:10px 14px;border-radius:10px;background:var(--raised);border:1px solid var(--line);min-width:180px}
+.fn.on{background:var(--card);border-color:var(--acc);color:var(--acc);min-width:0;flex:1}
+.fn.out{background:var(--acc);border-color:var(--acc);color:light-dark(#fff,#0b1020)}
+.fa{display:block;width:2px;height:18px;background:var(--bar);position:relative}
+.fa::after{content:"";position:absolute;left:-4px;bottom:-2px;border:5px solid transparent;border-top:6px solid var(--bar);border-bottom:0}
+.fbw{width:100%;border:1px dashed color-mix(in srgb,var(--acc) 45%,transparent);border-radius:12px;padding:22px 12px 12px;position:relative;margin:4px 0}
+.fbl{position:absolute;top:-9px;left:50%;transform:translateX(-50%);background:var(--card);padding:0 8px;font-size:11px;color:var(--acc);white-space:nowrap}
+.fbr{display:flex;gap:8px}
+.mv .sr{opacity:0;transform:translateX(12px);transition:opacity .5s var(--ease),transform .6s var(--ease)}
+.mv.in .sr{opacity:1;transform:none}
+.mv .sr:nth-child(2){transition-delay:.12s}.mv .sr:nth-child(3){transition-delay:.24s}
+.mv .fan>*{opacity:0;transform:translateY(-6px);transition:opacity .4s var(--ease),transform .5s var(--ease)}
+.mv.in .fan>*{opacity:1;transform:none}
+.mv .fan>:nth-child(2){transition-delay:.08s}.mv .fan>:nth-child(3){transition-delay:.16s}.mv .fan>:nth-child(4){transition-delay:.24s}.mv .fan>:nth-child(5){transition-delay:.36s}.mv .fan>:nth-child(6){transition-delay:.44s}.mv .fan>:nth-child(7){transition-delay:.52s}
+@media(max-width:600px){.sr{grid-template-columns:minmax(0,1fr) auto;row-gap:4px}.s3{grid-column:1/-1;color:var(--sub)}.fbr{flex-direction:column}.fn{min-width:0;width:100%}}
+.pipefig{min-height:220px;margin-top:4px}
+.pout{margin-top:16px;padding-top:16px;border-top:1px solid var(--line);display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.pout p{font-size:14px;color:var(--sub)}.pout b{font-size:20px;font-weight:500;color:var(--acc);margin-right:4px}
+.eps2{display:grid;grid-template-columns:repeat(10,22px);gap:4px}
+.eps2 i{height:22px;border-radius:4px;background:var(--raised);font-style:normal;font-size:10px;display:grid;place-items:center;color:var(--mute);font-family:"IBM Plex Mono",monospace}
+.mv.in .eps2 i{animation:epon .4s var(--ease) both;animation-delay:calc(var(--i)*.35s + .6s)}
+@keyframes epon{to{background:var(--acc);color:light-dark(#fff,#0b1020)}}
+@media(prefers-reduced-motion:reduce){.eps2 i{background:var(--acc);color:light-dark(#fff,#0b1020)}}
+.flowfig{min-height:200px;margin-top:0}
+.pairs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.pair+.pair{border-left:1px solid var(--line);padding-left:16px}
+.pt{font-size:14px;font-weight:500}
+.ps{font-size:12px;color:var(--mute);margin-top:2px}
+.pb{display:grid;grid-template-columns:1fr 1fr;gap:8px;height:180px;align-items:end;margin-top:12px;border-bottom:1px solid var(--line)}
+.pb div{height:100%;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;gap:4px;position:relative;padding-bottom:0}
+.pb i{width:100%;max-width:44px;min-height:3px;border-radius:4px 4px 0 0;background:var(--bar)}
+.pb i.on{background:var(--acc)}
+.pb b{font-size:13px;font-weight:500;white-space:nowrap;font-variant-numeric:tabular-nums}
+.pb b.on{color:var(--acc);font-size:15px}
+.pb span{position:absolute;bottom:-22px;font-size:12px;color:var(--sub);white-space:nowrap}
+.roas{margin-top:40px;padding:12px 16px;background:var(--raised);border-radius:10px;font-size:15px}
+.roas b{font-weight:600}.roas b.on{color:var(--acc)}
+.mv .pb i{transform:scaleY(0);transform-origin:bottom;transition:transform .9s var(--ease)}
+.mv .pb div+div i{transition-delay:.25s}
+.mv.in .pb i{transform:none}
+.flowfig .lk{fill:none;stroke:var(--bar);stroke-width:1.5}
+.flowfig .lk.on{stroke:var(--acc)}
+.flowfig .pk{fill:none;stroke:var(--acc);stroke-width:2.5;stroke-linecap:round;stroke-dasharray:2 14;animation:flowd 1.2s linear infinite}
+@keyframes flowd{to{stroke-dashoffset:-16}}
+.cnt{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:1px solid var(--line);margin-top:16px}
+.cnt div{padding:16px 0 0}
+.cnt div+div{padding-left:16px;border-left:1px solid var(--line)}
+.cnt b{display:block;font-size:24px;font-weight:500;font-variant-numeric:tabular-nums;line-height:1.2}
+.cnt span{font-size:13px;color:var(--sub)}
+.cells{display:grid;grid-template-columns:repeat(20,minmax(0,1fr));grid-auto-flow:column;grid-template-rows:repeat(5,auto);gap:3px}
+.cells i{aspect-ratio:1;border-radius:2px;background:var(--bar)}
+.cells i:nth-last-child(-n+5){background:var(--acc)}
+.leg{display:flex;flex-wrap:wrap;gap:16px;font-size:13px;color:var(--sub);margin-bottom:16px}
+.leg i{display:inline-block;width:10px;height:10px;border-radius:2px;background:var(--bar);margin-right:6px;vertical-align:-1px}
+.leg i.on{background:var(--acc)}
+.gr{display:grid;grid-template-columns:7em minmax(0,1fr);gap:12px;align-items:center;padding:8px 0;border-top:1px solid var(--line)}
+.gr .gl{font-size:14px;line-height:1.35}.gr .gl em{display:block;font-style:normal;font-size:12px;color:var(--sub);font-family:"IBM Plex Sans KR",sans-serif;font-variant-numeric:tabular-nums}
+.gr .hr{grid-template-columns:minmax(0,1fr) 3.5em;gap:8px}
+.gbs{display:grid;gap:4px}
+.steps{list-style:none;margin:0;padding:0;display:grid;gap:0}
+.steps li{display:grid;grid-template-columns:7em minmax(0,1fr) auto;gap:12px;align-items:baseline;padding:10px 0;border-top:1px solid var(--line);font-size:14px}
+.steps li b{font-weight:500}
+.steps li span{color:var(--sub)}
+.steps li.on b,.steps li.on em{color:var(--acc)}
+.steps em{font-style:normal;font-family:"IBM Plex Sans KR",sans-serif;font-variant-numeric:tabular-nums;font-size:13px;color:var(--mute);white-space:nowrap}
+.eps{display:grid;grid-template-columns:repeat(10,minmax(0,1fr));gap:4px}
+.eps i{height:40px;border-radius:4px;background:var(--bar)}
+.eps-l{display:flex;justify-content:space-between;margin-top:8px}
+.donut-row{display:flex;align-items:center;gap:24px;flex-wrap:wrap}
+.donut{width:128px;height:128px;border-radius:50%;background:conic-gradient(var(--acc) 0 86%,var(--bar) 0);display:grid;place-items:center;flex:none}
+.donut span{width:92px;height:92px;border-radius:50%;background:var(--card);display:grid;place-content:center;text-align:center;font-size:22px;font-weight:500}
+.vb{display:grid;grid-template-columns:1fr 1fr;gap:32px;height:220px;align-items:end;padding:0 12%;border-bottom:1px solid var(--line)}
+.vb div{height:100%;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;gap:6px}
+.vb i{width:100%;max-width:80px;border-radius:4px 4px 0 0;background:var(--bar)}
+.vb i.on{background:var(--acc)}
+.vb b{font-weight:500;font-size:18px;font-variant-numeric:tabular-nums}
+.vb-l{display:grid;grid-template-columns:1fr 1fr;gap:32px;padding:8px 12% 0;text-align:center}
+.meter{position:relative;height:12px;border-radius:3px;background:var(--raised);margin-top:32px}
+.meter i{position:absolute;inset:0 auto 0 0;border-radius:3px;background:var(--acc)}
+.meter span{position:absolute;bottom:20px;transform:translateX(-50%);font-weight:500;font-size:15px;white-space:nowrap;font-variant-numeric:tabular-nums}
+.scale{display:flex;justify-content:space-between;margin-top:6px}
+.route{display:grid;grid-template-columns:auto auto minmax(0,1fr);gap:12px;align-items:center;font-size:14px}
+.route .node{border:1px solid var(--line);border-radius:8px;padding:8px 12px;background:var(--raised)}
+.route .col{display:grid;gap:6px}
+.route .col div{border:1px solid var(--line);border-radius:8px;padding:6px 12px}
+.route .ar{color:var(--mute)}
+.top2{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.btn.sm{height:32px;padding:0 12px;font-size:13px;border-radius:8px}
+.mv .track i,.mv .meter i{transform:scaleX(0);transform-origin:left;transition:transform .9s var(--ease)}
+.mv .vb i{transform:scaleY(0);transform-origin:bottom;transition:transform .9s var(--ease)}
+.mv .pb i{will-change:transform}
+.mv .cells i,.mv .eps i{opacity:.15;transition:opacity .3s var(--ease)}
+.mv.in .track i,.mv.in .meter i,.mv.in .vb i{transform:none}
+.mv.in .cells i,.mv.in .eps i{opacity:1}
+.mv.ga .track i.ga-bar{transform:scaleX(0);transition:transform 1.4s var(--ease)}
+.mv.ga.in .track i.ga-bar{transform:scaleX(var(--from))}
+.mv.ga.ga-go .track i.ga-bar{transform:none}
+.ba{display:grid;gap:0;margin-top:20px}
+.ba>div{display:grid;grid-template-columns:3.5em minmax(0,1fr);gap:12px;padding:10px 0;border-top:1px solid var(--line);font-size:14px}
+.ba b{font-weight:500;display:block}
+.ba span{color:var(--sub)}
+
+.vgrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:40px}
+.vc{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:28px;display:flex;flex-direction:column}
+.vic{width:44px;height:44px;border-radius:12px;display:grid;place-items:center;background:var(--raised);border:1px solid var(--line);color:var(--ink)}
+.vic svg{width:20px;height:20px}
+.vc h3{font-size:20px;margin-top:20px}
+.vp{font-size:15px;color:var(--sub);line-height:1.7;margin-top:10px}
+.vl{font-size:13px;color:var(--mute);margin-top:20px}
+.vu{list-style:none;margin:8px 0 0;padding:0;display:grid;gap:8px;flex:1;align-content:start}
+.vu li{position:relative;padding-left:22px;font-size:14px;line-height:1.55}
+.vu li::before{content:"";position:absolute;left:2px;top:6px;width:10px;height:6px;border-left:2px solid var(--acc);border-bottom:2px solid var(--acc);transform:rotate(-45deg)}
+.vq{margin-top:20px;padding:16px 18px;border-radius:12px;background:var(--acc);color:light-dark(#fff,#0b1020);font-size:16px;font-weight:500;line-height:1.45}
+.vkpi{margin-top:20px;padding-top:16px;border-top:1px solid var(--line)}
+.vkpi>span{display:block;font-size:12px;color:var(--mute);margin-bottom:8px}
+.vkpi>div{display:flex;flex-wrap:wrap;gap:6px}
+.vkpi b{font-size:13px;font-weight:500;padding:6px 10px;border-radius:8px;background:color-mix(in srgb,var(--acc) 10%,transparent);color:var(--acc)}
+.vev{display:block;margin-top:20px;padding:14px 16px;border-radius:12px;background:var(--raised);text-decoration:none;font-size:13px;line-height:1.5;transition:background-color .2s var(--ease)}
+.vev span{display:block;font-size:11px;color:var(--acc);font-weight:600;margin-bottom:2px}
+.vev em{display:block;font-style:normal;color:var(--mute);margin-top:6px;font-size:12px}
+.vev:hover em{color:var(--acc)}
+@media(max-width:960px){.vgrid{grid-template-columns:minmax(0,1fr)}.vc{padding:22px}}
+.cols3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:32px;margin-top:40px}
+.cols3>div{border-top:1px solid var(--ink);padding-top:20px}
+.cols3 ul{list-style:none;margin:12px 0 0;padding:0;font-size:15px}
+.cols3 li{padding:6px 0}
+.cols3 li .mono{display:block}
+.cols3 p{color:var(--sub);font-size:15px;margin-top:8px}
+.cols3 .ev{margin-top:16px}
+.contact{padding-bottom:64px}
+.cbox{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:clamp(32px,5vw,72px);background:light-dark(color-mix(in srgb,var(--acc) 6%,#fff),color-mix(in srgb,var(--acc) 8%,var(--card)));border:1px solid color-mix(in srgb,var(--acc) 16%,transparent);color:var(--ink);border-radius:24px;padding:clamp(28px,5vw,64px);align-items:center}
+.ckick{font-size:13px;font-weight:500;color:var(--acc)}
+.cbox h2{font-size:clamp(30px,3.6vw,46px);line-height:1.2;margin-top:10px}
+.cdesc{font-size:16px;line-height:1.7;margin-top:16px;color:var(--sub);max-width:34rem}
+.ckw{display:flex;flex-wrap:wrap;gap:6px;margin-top:24px}
+.ckw span{font-size:13px;padding:6px 12px;border-radius:999px;background:var(--card);border:1px solid var(--line);color:var(--sub)}
+.ccard{background:var(--card);color:var(--ink);border-radius:16px;padding:22px;border:1px solid var(--line)}
+.clab{font-size:12px;color:var(--mute)}
+.cmail{display:block;font-size:clamp(18px,1.9vw,22px);font-weight:500;margin-top:4px;text-decoration:none;overflow-wrap:anywhere}
+.cbtns{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.cbtns .btn{flex:1;justify-content:center;min-width:120px}
+.btn.cw{background:var(--acc);color:light-dark(#fff,#0b1020);border:0}
+.btn.co{background:var(--raised);color:var(--ink)}
+.clinks{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px}
+.clinks a{display:block;padding:14px 16px;border-radius:14px;text-decoration:none;background:var(--card);border:1px solid var(--line);transition:border-color .2s var(--ease)}
+.clinks a:hover{border-color:var(--acc)}
+.clinks b{display:block;font-size:14px;font-weight:500}
+.clinks span{display:block;font-size:12px;color:var(--sub);margin-top:2px}
+@media(max-width:960px){.cbox{grid-template-columns:minmax(0,1fr)}}
+@media(max-width:600px){.clinks{grid-template-columns:minmax(0,1fr)}.cbtns .btn{min-width:0}}
+footer{padding:24px 0 40px}
+
+@media(max-width:960px){
+ .pj,.about{grid-template-columns:minmax(0,1fr)}
+ .pj{gap:32px;padding:72px 0}
+ .cgrid{grid-template-columns:200px minmax(0,1fr);padding:40px 0 56px}
+ .cstats{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .cstats div:nth-child(3){padding-left:0;border-left:0}
+ .cstats div:nth-child(n+3){margin-top:16px}
+ .cols3{grid-template-columns:minmax(0,1fr)}
+}
+@media(max-width:600px){
+ section{padding:72px 0}
+  nav .logo{display:none}nav .links{margin-left:0}
+ .rowlist li{grid-template-columns:minmax(0,1fr);gap:2px}
+ .hr{grid-template-columns:6.5em minmax(0,1fr) 4.5em;gap:8px}
+ .gr{grid-template-columns:5.5em minmax(0,1fr)}
+ .steps li{grid-template-columns:5em minmax(0,1fr)}
+ .steps em{grid-column:2}
+ .route{grid-template-columns:minmax(0,1fr)}.route .ar{transform:rotate(90deg);justify-self:start}
+ .viz,.panel{padding:16px}
+ .cgrid{grid-template-columns:minmax(0,1fr);gap:28px;padding:28px 0 48px}
+ nav .links a{padding:12px 10px;font-size:15px}
+ nav .wrap{height:52px}
+ .ctext h1{font-size:clamp(28px,8.4vw,34px)}
+ .ctext .lead{font-size:16px}
+ .portrait{grid-template-columns:96px minmax(0,1fr)}
+ .portrait figcaption{font-size:13px}
+ .cstats b{font-size:24px}
+ .actions .btn{flex:1;justify-content:center}
+ .btitle{font-size:21px}
+ .kv{gap:16px 28px}.kv b{font-size:24px}
+ .pj h3{font-size:22px}
+ dl{grid-template-columns:4.2em minmax(0,1fr);gap:6px 12px}
+ .pair .ps{min-height:2.8em}
+ .portrait{position:static;display:grid;grid-template-columns:112px minmax(0,1fr);gap:16px;align-items:end}
+ .portrait figcaption{margin:0}.portrait figcaption b{font-size:22px}
+ .pimg{border-radius:14px}
+ .ctext h1{font-size:34px}
+ .bnote{text-align:left}
+ .bigfig{min-height:240px}
+ .cmeta span:nth-child(2){display:none}
+ .pairs{gap:8px}.pair+.pair{padding-left:8px}.pb{height:150px;gap:4px}.pb b{font-size:11px}.pb b.on{font-size:13px}.pb span{font-size:11px}
+}
+.lc-anim .lc-l{animation:draw 1.5s cubic-bezier(.65,0,.35,1) both}
+.lc-anim .lc-a{animation:lcfade 1s ease .9s both}
+.lc-anim .lc-d{transform-box:fill-box;transform-origin:center;animation:lcpop .45s cubic-bezier(.34,1.56,.64,1) both}
+.lc-anim .lc-v{animation:lcup .5s cubic-bezier(.22,1,.36,1) both}
+.lc-r{opacity:0}
+.lc-anim .lc-r{transform-box:fill-box;transform-origin:center;animation:lcring 1.6s ease-out both}
+.lc-wait *{animation-play-state:paused!important}
+@keyframes lcfade{from{opacity:0}}
+@keyframes lcpop{from{transform:scale(0)}}
+@keyframes lcup{from{opacity:0;transform:translateY(6px)}}
+@keyframes lcring{0%{opacity:0;transform:scale(.4)}30%{opacity:.9}100%{opacity:0;transform:scale(2.2)}}
+@media(prefers-reduced-motion:reduce){.lc-anim *{animation:none!important}}
+@media(prefers-reduced-motion:reduce){#heroLine,.flowfig .pk{animation:none!important}.mv .track i,.mv .meter i,.mv .vb i,.mv .cells i,.mv .eps i{transition:none!important}}
+@keyframes draw{from{stroke-dashoffset:var(--len)}to{stroke-dashoffset:0}}
+</style>
+</head>
+<body>
+
+<nav aria-label="섹션 이동"><div class="wrap">
+ <div class="links"><a href="#top">소개</a><a href="#projects">프로젝트</a><a href="#skills">역량</a><a href="#vision">다짐</a><a href="#contact">연락처</a></div>
+</div></nav>
+
+<header class="cover" id="top">
+ <div class="wrap">
+  <div class="cgrid">
+   <figure class="portrait">
+    <div class="pimg"><img src="img/profile.webp" alt="강윤경 증명사진" width="600" height="732"></div>
+    <figcaption><b>강윤경</b><span>숙명여대 경영학부 · 빅데이터학과</span></figcaption>
+   </figure>
+   <div class="ctext">
+    <p class="kicker">콘텐츠 · 그로스 · 데이터 분석 · AI 자동화</p>
+    <h1>데이터로 인사이트를 찾고, 생성형 AI로 콘텐츠를 만드는 마케터</h1>
+    <p class="lead">스타트업에서 신규 웹 서비스 4개를 런칭하며 고객 설문·인터뷰, GA4 분석, SEO, Meta·네이버 광고, 콘텐츠 운영까지 마케팅 전 과정을 맡았습니다.<br>지금은 SSAFY에서 Python과 AI 파이프라인 설계를 익히고 있습니다.</p>
+    <div class="actions"><a class="btn p" href="#projects">프로젝트 보기</a><a class="btn s" href="#contact">연락하기</a></div>
+    <div class="cstats">
+     <div><b>20배+</b><span>가입 파트너, 전월 대비</span></div>
+     <div><b>7만 건</b><span>분석한 커뮤니티 게시글</span></div>
+     <div><b>320%</b><span>광고 ROAS, Meta·네이버</span></div>
+     <div><b>20분</b><span>AI 자동화 후 영상 1편 제작</span></div>
+    </div>
+   </div>
+  </div>
+ </div>
+ <div class="wrap">
+  <div class="edu edu-top"><span class="lbl" style="margin:0">학력</span><span>숙명여자대학교 경영학부 · 빅데이터학과 복수전공</span><span class="mono">2026.08 졸업</span><span class="lbl" style="margin:0">자격</span><span>ADsP 데이터분석 준전문가</span><span class="mono">2024.06</span></div>
+ </div>
+</header>
+
+
+<section id="about"><div class="wrap">
+ <h2>데이터와 AI로 일하는 마케터</h2>
+ <p class="lead" style="max-width:none">커뮤니티 데이터로 고객의 고민을 찾아 제안을 바꾸자 가입 파트너가 전월 대비 20배 이상 늘었습니다.<br>감이 아닌 데이터에서 출발하고, 반복 작업은 AI로 줄여 그 시간을 기획과 실험에 씁니다.</p>
+ <div class="journey mixc" id="journey">
+  <div class="jtop"><span style="font-weight:500">경력 구성</span><span class="mono">칸 너비 = 기간</span></div>
+  <div class="mix" role="img" aria-label="기간 비례 경력 구성: 공정거래조정원 6개월, Frankfurt UAS 한 학기, 정책관측소 10개월, SSAFY 진행 중(12개월 과정)">
+   <div class="seg"><b>공정거래조정원</b><span>6개월</span></div>
+   <div class="seg"><b>Frankfurt UAS</b><span>한 학기</span></div>
+   <div class="seg on"><b>정책관측소</b><span>10개월</span></div>
+   <div class="seg on now"><i class="done"></i><b>SSAFY 16기</b><span>진행 중</span></div>
+  </div>
+  <div class="mixd">
+   <div><p class="mono">2023.07 – 2023.12</p><h3>한국공정거래조정원</h3><p class="role">CP가맹정보팀 인턴</p><p class="what">CP 등급평가 현장평가·보고서 작성, CP 포럼·시상식 운영 지원</p></div>
+   <div><p class="mono">2024.08 – 2025.02</p><h3>Frankfurt UAS</h3><p class="role">독일 방문학생 · 경영학부</p><p class="what">경영학부 한 학기 수학</p></div>
+   <div class="on"><p class="mono">2025.10 – 2026.07</p><h3>정책관측소</h3><p class="role">마케팅 · 인턴에서 정규직 전환</p><p class="what">나만의 행정사, 어드민 데스크 등 웹 서비스의 콘텐츠·그로스·퍼포먼스 마케팅 전담</p></div>
+   <div class="on"><p class="mono">2026.07 – 2027.06 예정</p><h3>SSAFY 16기</h3><p class="role">삼성 청년 SW·AI 아카데미 · Python 트랙</p><p class="what">AI 서비스 개발 프로젝트 · LangGraph, Django, FastAPI 실습</p></div>
+  </div>
+ </div>
+ <div class="strengths">
+  <p class="lbl">강점</p>
+  <div class="sgrid">
+   <article class="sc"><p class="snum">7만 건 <span>→</span> 3가지</p><h3>데이터 인사이트</h3><p class="sdesc">커뮤니티 게시글 7만 건에서 고객이 반복해 말하는 고민 3가지를 뽑고, 매달 GA4로 채널별 전환을 점검합니다</p><p class="stools">GA4 · Python · KoNLPy · SQL · ADsP</p><p class="slinks"><a href="#voc">03 커뮤니티 분석</a><a href="#ga4">04 GA4 리포트</a></p></article>
+   <article class="sc"><p class="snum">100편+</p><h3>채널별 콘텐츠 기획·작성</h3><p class="sdesc">독자에 따라 채널과 형식을 나눠 씁니다. 외국인 대상 체류 가이드 100편 이상으로 검색 유입을 쌓았습니다</p><p class="stools">블로그 · 카드뉴스 · 유튜브 · SEO · 고객 인터뷰</p><p class="slinks"><a href="#trend">01 주간 리포트</a><a href="#seo">06 블로그 성과</a></p></article>
+   <article class="sc"><p class="snum">10편 <span>/</span> 하루</p><h3>AI로 제작 효율화</h3><p class="sdesc">반복되는 제작은 AI 파이프라인으로 넘깁니다. 이용가이드 영상 10편을 하루 만에 완성했습니다</p><p class="stools">LangGraph · TTS · 멀티에이전트 · 바이브 코딩</p><p class="slinks"><a href="#video">05 영상 자동화</a><a href="#ssafy">09 AI 서비스</a></p></article>
+  </div>
+ </div>
+</div></section>
+<div class="band" id="viewsband">
+  <div class="wrap">
+   <div class="bhead"><div><p class="mono">네이버 블로그 일 평균 조회수 · 2026.05–10 · 출처 네이버 블로그 통계</p><p class="btitle">광고비 없이, 검색 유입만으로 3개월 만에<br><span class="dtag">일 평균 조회수</span> <b>92 → 1,848</b></p></div><p class="bnote">외국인이 실제로 검색하는 정착 키워드에 맞춰<br>체류 가이드 100편 이상을 쌓은 결과</p></div>
+   <div class="fig bigfig"><svg id="heroSvg" role="img" aria-label="일 평균 조회수: 5월 92, 6월 184, 7월 1,354, 8월 1,848, 9월 1,505, 10월 1,080"></svg></div>
+  </div>
+ </div>
+
+
+<section id="projects" style="padding-bottom:32px"><div class="wrap">
+ <a class="pback" href="#top">← 메인으로</a>
+ <h2>프로젝트</h2>
+ <p class="lead" style="max-width:none">인사이트, 채널별 콘텐츠, 그로스, AI 효율화 경험을 프로젝트별로 정리했습니다.<br>도표의 수치는 모두 실제 운영 데이터입니다.</p>
+ <div class="pjump" role="navigation" aria-label="프로젝트 그룹"><a href="#grp-work">실무 프로젝트 <span>01–07</span></a><a href="#grp-edu">학교·개인 프로젝트 <span>08–09</span></a></div>
+ <div id="pjList"></div>
+</div></section>
+
+<section id="skills"><div class="wrap">
+ <h2>역량과 이력</h2>
+ <div class="cols3">
+  <div><h3>활용 툴 · OA</h3><ul>
+   <li>GA4 · SEO · Meta 광고 · 네이버 광고</li><li>SQL · Python · R</li><li>Tableau · Power BI · Figma · Canva · Notion</li><li>Django · JavaScript</li><li>Excel · PowerPoint · Word</li></ul></div>
+  <div><h3>자격 · 수상</h3><ul>
+   <li>ADsP 데이터분석 준전문가<span class="mono">2024.06</span></li>
+   <li>제20회 경영사례개발대회 장려상<span class="mono">비즈니스 애널리틱스 부문 · 2022.11</span></li>
+   </ul></div>
+  <div><h3>교육 · 활동</h3><ul>
+   <li>SQL 입문부터 활용까지</li><li>데이터 분석 보고서 작성과 대시보드 개발</li>
+   <li>통계를 활용한 탐색적 분석 · 선형대수로 배우는 빅데이터 · 빅데이터를 위한 확률과 통계</li>
+   <li>한국상경학회<span class="mono">경영경제 용어 스터디 · 경제·경영 세미나</span></li></ul></div>
+ </div>
+</div></section>
+
+<section id="vision"><div class="wrap">
+ <h2>이런 마케터가 되겠습니다</h2>
+ <p class="lead">지금까지의 프로젝트에서 배운 것을, 입사 후 일하는 방식으로 이어 가겠습니다.</p>
+ <div class="vgrid">
+  <article class="vc"><div class="vic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><path d="M8 9h8M8 13h5"/></svg></div><h3>고객의 언어로 말하는 마케터</h3><p class="vp">감이 아니라 데이터와 커뮤니티에서 고객의 진짜 고민을 찾고, 그 고민을 메시지와 제안의 출발점으로 삼겠습니다. 고객이 직접 쓴 말에서 키워드를 뽑아 카피와 콘텐츠 주제를 정하겠습니다.</p><p class="vl">입사 후 이렇게 일하겠습니다</p><ul class="vu"><li>리뷰·커뮤니티·문의 데이터를 정기적으로 모아 분석</li><li>찾아낸 고민을 광고 소재와 콘텐츠 기획에 바로 반영</li><li>고객 설문·인터뷰로 데이터에 없는 맥락까지 확인</li><li>자주 나오는 고민은 FAQ·가이드 콘텐츠로 먼저 풀기</li></ul></article>
+  <article class="vc"><div class="vic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 15l4-4 3 3 5-6"/><path d="M15 8h4v4"/></svg></div><h3>숫자로 증명하는 마케터</h3><p class="vp">매달 성과를 숫자로 점검하고, 이상 지점까지 확인해 다음 액션을 정하겠습니다. 광고비 한 푼도 근거 없이 쓰지 않겠습니다.</p><p class="vl">입사 후 이렇게 일하겠습니다</p><ul class="vu"><li>채널별 전환율과 ROAS를 월간 리포트로 정리</li><li>급증·급감 구간은 원인까지 확인한 뒤 예산 조정</li><li>캠페인마다 목표 지표를 먼저 정하고 시작</li><li>결과는 숫자와 다음 액션으로 팀에 공유</li></ul></article>
+  <article class="vc"><div class="vic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6M10 3v6L4.5 18.5A1.7 1.7 0 0 0 6 21h12a1.7 1.7 0 0 0 1.5-2.5L14 9V3"/><path d="M7 15h10"/></svg></div><h3>AI로 더 많이 실험하는 마케터</h3><p class="vp">반복되는 제작은 AI로 줄이고, 아낀 시간을 기획과 실험에 쓰겠습니다. 같은 기간에 더 많은 가설을 검증하겠습니다.</p><p class="vl">입사 후 이렇게 일하겠습니다</p><ul class="vu"><li>카드뉴스·영상 같은 반복 제작을 자동화 파이프라인으로 전환</li><li>줄인 시간으로 소재 A/B 테스트와 새 채널 실험</li><li>자동화한 결과물은 사람이 최종 검수해 품질 유지</li><li>쓸만한 AI 워크플로는 팀이 함께 쓰도록 문서화</li></ul></article>
+ </div>
+</div></section>
+
+<section class="contact" id="contact"><div class="wrap">
+ <div class="cbox">
+  <div class="cl1">
+   <p class="ckick">연락처</p>
+   <h2>함께 일할 기회를 기다립니다</h2>
+   <p class="cdesc">데이터로 고객을 읽고, AI로 더 빠르게 실험하는 마케터 강윤경입니다. 콘텐츠·그로스·데이터 분석이 만나는 자리에서, 첫 달부터 숫자로 기여하겠습니다.</p>
+   <div class="ckw"><span>콘텐츠 마케팅</span><span>그로스 마케팅</span><span>퍼포먼스 마케팅</span><span>데이터 분석</span><span>AI 자동화</span></div>
+  </div>
+  <div class="cl2">
+   <div class="ccard">
+    <p class="clab">이메일</p>
+    <a class="cmail" href="mailto:susiejaneiris@gmail.com">susiejaneiris@gmail.com</a>
+    <div class="cbtns"><button class="btn cw" id="copyBtn" type="button">이메일 복사</button><a class="btn co" href="mailto:susiejaneiris@gmail.com">메일 보내기</a></div>
+   </div>
+   <div class="clinks">
+    <a href="#projects"><b>프로젝트 다시 보기</b><span>9개 프로젝트를 한 번에</span></a>
+    <a href="#top"><b>처음으로</b><span>프로필과 핵심 성과</span></a>
+   </div>
+  </div>
+ </div>
+</div></section>
+<footer class="wrap mono">2026 강윤경 포트폴리오</footer>
+
+<script>
+{
+const P=[
+ {id:'trend',viz:'grid',area:'리포트 · 뉴스레터',title:'행정사 업계 동향을 주간 트렌드 리포트로',
+  desc:'출입국·노동 법령 변화 같은 업계 동향을 매주 정리해, 행정사 회원에게 "이번 주 행정사 업계 트렌드"로 발행했습니다.',
+  stats:[['주 1회','발행 주기 (월 4–5회)'],['100편+','누적 발행']],
+  dl:[['배경','법령·제도 변화가 잦아 행정사가 매주 직접 챙기기 어려움'],['한 일','법령정보·뉴스 API로 글감 수집을 자동화하고, 행정사에게 필요한 핵심만 정리'],['결과','꾸준한 발행으로 검색(SEO) 유입이 늘고 회원가입 전환으로 이어짐']],
+  tags:['Notion','Canva','Claude','Figma','법령정보 API','네이버 뉴스 API'],
+  learn:'꾸준히 쌓인 "바로 써먹는 정보"가 검색 유입과 가입 전환을 함께 만든다는 것을 배웠습니다.'},
+ {id:'sns',viz:'index',area:'SNS · 그로스',title:'SNS 콘텐츠 운영과 그로스',
+  desc:'리포트 인사이트를 SNS 콘텐츠로 재가공하고, 광고·채널 운영으로 유입을 늘렸습니다.',
+  stats:[['1,800명+','SNS 팔로워 (4명에서 시작)'],['2.6배','블로그 유입 (운영 전 대비)'],['320%','광고 ROAS (Meta·네이버)']],
+  dl:[['채널','인스타그램 · 네이버 블로그 · 유튜브'],['한 일','카드뉴스 제작, Meta·네이버 광고 집행, GA4 성과 분석'],['방식','콘텐츠·광고 집행 → GA4 성과 확인 → 소재·포맷 개선']],
+  learn:'채널마다 반응하는 포맷이 다릅니다. 성과 지표를 보고 소재를 빠르게 바꾸는 것이 효율을 만듭니다.',flow:[['집행','콘텐츠·광고 운영'],['측정','GA4 채널별 성과 확인'],['개선','소재·포맷 교체']]},
+ {id:'voc',viz:'funnel',area:'데이터 인사이트',title:'커뮤니티 게시글 7만 건에서 고객의 고민을 찾다',
+  desc:'반응이 없던 이유를 감이 아닌 데이터에서 찾기 위해, 이민행정사 커뮤니티 게시글 약 7만 건을 분석해 행정사들의 핵심 고민을 뽑았습니다.',
+  stats:[['약 7만 건','분석한 커뮤니티 게시글'],['20배+','가입 파트너 (전월 대비)']],
+  dl:[['핵심 고민','고객 확보 · 비자 실무 노하우 · 반복 서류 부담'],['방법','Python(pandas) · KoNLPy 형태소 분석 · 키워드 빈도']],
+  learn:'메시지는 우리가 하고 싶은 말이 아니라, 고객의 언어로 쓰인 고민에서 시작해야 합니다.',
+  },
+ {id:'ga4',viz:'ga4',area:'데이터 인사이트',title:'매달 쓰는 GA4 성과 리포트',
+  desc:'두 서비스의 GA4 데이터를 매달 정리해, 숫자의 변화와 다음 달 액션을 리포트로 정리했습니다.',
+  stats:[['30–48%','9월 대비 10월 주요 지표 증가'],['2개','운영한 GA4 속성']],
+  dl:[['지표','유입 채널별 전환율 · 사용자 · 세션'],['분석','전월 대비 변화, 이상 지점 확인 (10/15 급증 → 봇 유입 여부 점검)'],['실행','광고 소재 · 콘텐츠 개선']],
+  learn:'숫자의 변화에는 이유가 있습니다. 이상 지점까지 확인해야 잘못된 의사결정과 광고비 낭비를 막을 수 있습니다.'},
+ {id:'video',viz:'video',area:'AI 효율화',title:'LangGraph로 영상 콘텐츠 제작 자동화',
+  desc:'사용설명서를 넣으면 대본·TTS 내레이션·영상까지 이어지는 AI 파이프라인을 만들어, 서비스 이용가이드 영상 10편 제작에 활용했습니다.',
+  stats:[['20분','편당 제작 시간 (내외)'],['10편','이용가이드 영상, 하루 만에 완성']],
+  dl:[['한 일','LangGraph 노드별 역할·흐름 설계, 내레이션 발음 규칙 프롬프트 정의(E-9 → "이 나인"), TTS 음성 선정과 영상 합성 자동화'],['확장','반복되는 카드뉴스 제작도 멀티에이전트로 자동화']],
+  tags:['LangGraph','Python','GPT-5 mini','Claude','Google TTS','MoviePy'],
+  learn:'자동화로 줄인 제작 시간을 기획과 성과 분석에 다시 쓰는 것이 1인 마케터의 경쟁력입니다.',
+  flow:[['입력','노션 사용설명서'],['대본','편별 내레이션 작성'],['읽기 규칙','비자 코드 발음 적용'],['TTS','대본을 음성으로'],['합성','화면 + 내레이션'],['업로드','YouTube 시리즈 10편']]},
+ {id:'seo',viz:'donut',area:'콘텐츠 · SEO',title:'독자별 콘텐츠 시리즈와 블로그 성과',
+  desc:'같은 도메인이라도 독자에 따라 채널과 형식을 나눴고, 외국인이 실제로 검색하는 정착 키워드에 맞춰 체류 가이드를 쌓자 일 평균 조회수가 92에서 1,848로 늘었습니다.',
+  stats:[['20배','블로그 일 평균 조회수 (3개월)'],['86%','네이버 검색 유입 비중'],['100편+','한국 체류 가이드']],
+  dl:[['외국인','한국 체류 가이드 — ARC 발급, 휴대폰 개통, 건강보험, 병원·응급실, 운전면허, 체류지 변경'],['행정사','행정사 인사이트 주간 연재 — 업계 트렌드, 수입을 늘리는 법, 실무 노하우'],['영상','개업·마케팅 영상과 서비스 이용가이드 시리즈'],['SEO','키워드 매핑 · 콘텐츠 에셋 DB 구축 · 3D 썸네일 템플릿']],
+  learn:'검색 수요가 있는 키워드를 먼저 찾고 쓰면, 광고비 없이도 유입이 쌓입니다.',chart:true},
+ {id:'partner',viz:'partner',area:'그로스',title:'제안 방식을 바꿔 가입 파트너 20배 이상',
+  desc:'파트너 행정사 영업에서 제안 방식을 바꾼 뒤, 가입 파트너가 전월 대비 20배 이상 늘었습니다.',
+  stats:[['20배+','가입 파트너 (전월 대비)']],
+  ba:[['이전','서비스 소개 위주의 제안','서비스를 소개하고 가입을 권했지만 반응이 거의 없음'],['변화','상대의 성장을 먼저 돕는 제안','커뮤니티 데이터로 찾은 고민에 맞춰 개업·마케팅 노하우 영상과 카드뉴스를 먼저 제공'],['이후','가입 파트너 20배 이상','전월 대비 20배 이상 증가']],
+  learn:'상대는 자기 성과가 오를 때 움직입니다. 설득보다 상대의 성장을 먼저 돕는 제안이 전환을 만듭니다.'},
+ {id:'movie',viz:'movie',area:'그로스 분석',title:'무엇이 성과를 만드는가: 흥행 신호를 채널 전략으로',
+  desc:'영화 14,807편의 성과 데이터로 초기 성과·고객 반응·채널별 차이가 흥행에 미치는 영향을 분석하고, 그로스 관점의 시사점을 도출했습니다.',
+  stats:[['14,807편','IMDB 성과 데이터 (2000–2020)'],['R² 0.664','흥행 예측 모델 (XGBoost)'],['1,242편','OTT 채널 비교']],
+  qa:[['첫 주 성과가 장기 성과를 보장할까?','수익이 개봉주에 과하게 몰리면 장기 흥행에 불리 → 런칭 직후 버스트보다 지속 유입·리텐션 설계가 중요'],['어떤 고객 반응이 성과로 이어질까?','비평가 리뷰 수와 관객 평점이 높을수록 흥행 가능성 상승 → 리뷰·평점 같은 소셜 프루프 확보'],['같은 콘텐츠도 채널마다 다르게 팔릴까?','OTT 순위는 장르·배우 친숙도에 더 민감 → 채널별로 타깃과 소재를 다르게 설계']],
+  learn:'성과를 만드는 신호는 첫 반응보다 지속성과 채널 적합성에 있습니다.'},
+ {id:'ssafy',viz:'ssafy',area:'AI',title:'AI 서비스 개발 프로젝트',
+  desc:'고객 반응 분석과 AI 추천·생성 서비스를 직접 만들며, 마케팅에 AI를 적용하는 방법을 익혔습니다.',
+  stats:[['60초 → 18초','댓글 분석 처리 시간'],['12개','도서 서비스 기능 구현']],
+  dl:[['댓글 분석','회사명을 넣으면 토스증권 커뮤니티 댓글을 실시간 수집 → 전처리 → LLM 요약. LangGraph 병렬 처리로 속도 개선, 분위기·주요 화제·한 줄 요약으로 정리'],['도서 추천','오늘의 서재 — 취향 추천, 표지 생성·분석, TTS. 요청 난이도에 따라 모델을 골라 비용 관리(gpt-5-nano / gpt-5-mini), Guardrail로 부적절 요청 차단']],
+  tags:['LangGraph','크롤링','LLM','Django','FastAPI','생성형 AI'],
+  learn:'고객 반응을 자동으로 모아 요약하면 VOC 분석을 매일 하는 마케팅이 가능합니다. AI 결과물의 품질은 "무엇을 원하는지 정확히 말하는 능력"에서 나옵니다.'}
+];
+
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const n2=i=>String(i+1).padStart(2,'0');
+const box=(t,inner,note)=>`<div class="viz"><div class="vt">${t}</div>${inner}${note?`<p class="mono vn">${note}</p>`:''}</div>`;
+const hbars=(rows,max)=>`<div class="hb">${rows.map(r=>`<div class="hr"><span>${esc(r[0])}</span><span class="track"><i class="${r[3]?'on':''}" style="width:${Math.max(1.5,r[1]/max*100).toFixed(1)}%"></i></span><b>${esc(r[2])}</b></div>`).join('')}</div>`;
+const steps=rows=>`<ol class="steps">${rows.map(r=>`<li class="${r[3]?'on':''}"><b>${esc(r[0])}</b><span>${esc(r[1])}</span><em>${esc(r[2]||'')}</em></li>`).join('')}</ol>`;
+const V={
+ grid:()=>box('리포트가 만들어지고 성과로 이어지는 흐름',`<div class="fig flowfig"><svg id="flowSvg" role="img" aria-label="법령정보 API와 네이버 뉴스 API에서 수집, 선별·요약, 주간 트렌드 리포트 주 1회 발행, 검색 유입 증가, 회원가입 전환"></svg></div><div class="cnt"><div><b id="cntN">0</b><span>누적 발행 (편)</span></div><div><b>4–5회</b><span>월 발행</span></div><div><b>2</b><span>자동 수집 API</span></div></div>`,'법령·제도 변화를 매주 행정사 관점으로 정리 · 2025.12–2026.06'),
+ index:()=>{const C=[['SNS 팔로워','4명에서 약 450배',[['운영 전','4명',0.8],['3개월 후','1,800명',100,1]]],['블로그 유입','운영 전 대비',[['운영 전','1배',38.5],['3개월 후','2.6배',100,1]]],['광고 ROAS','광고비 대비 매출',[['광고비','100원',31.3],['매출','320원',100,1]]]];
+  return box('운영 3개월, 무엇이 달라졌나',`<div class="pairs">${C.map(c=>`<div class="pair"><p class="pt">${c[0]}</p><p class="ps">${c[1]}</p><div class="pb">${c[2].map(b=>`<div><b class="${b[3]?'on':''}">${b[1]}</b><i class="${b[3]?'on':''}" style="height:${b[2]}%"></i><span>${b[0]}</span></div>`).join('')}</div></div>`).join('')}</div><p class="roas">광고비 <b>100원</b>을 쓰면 매출 <b class="on">320원</b>이 돌아왔어요</p>`,'채널: 인스타그램, 네이버 블로그, 유튜브')},
+ funnel:()=>`<div class="viz fill"><div class="vt">게시글 7만 건에서 제안까지</div><div class="chain">
+  <div class="ck"><div class="ball b1"><b>70,000</b><span>게시글</span></div><p class="cs">수집</p><p class="cd">이민행정사 밴드</p></div>
+  <div class="cl"></div>
+  <div class="ck"><div class="ball b2"><b>형태소</b><span>분석</span></div><p class="cs">정제</p><p class="cd">pandas · KoNLPy</p></div>
+  <div class="cl"></div>
+  <div class="ck"><div class="trio"><i>1</i><i>2</i><i>3</i></div><p class="cs">추출</p><p class="cd">핵심 고민 3가지</p></div>
+  <div class="cl on"><span>제안</span></div>
+  <div class="ck"><div class="ball b4"><b>20배+</b><span>가입 파트너</span></div><p class="cs on">성과</p><p class="cd">전월 대비</p></div>
+ </div><p class="vt2">찾아낸 핵심 고민 3가지</p><div class="pains3">${['고객 확보','비자 실무 노하우','반복 서류 부담'].map((p,i)=>`<div><em>0${i+1}</em><b>${p}</b></div>`).join('')}</div><p class="mono vn">고민에 맞춰 개업·마케팅 노하우 영상과 카드뉴스를 먼저 제공 · 키워드 빈도 분석</p></div>`,
+ ga4:()=>{const R=[['활성 사용자',280,393],['새 사용자',263,371],['세션수',357,508],['참여 세션수',244,316],['조회수',1603,2369]];
+  return `<div class="viz ga" id="gaViz"><div class="top2"><div class="vt" style="margin:0">9월 → 10월 주요 지표 · 담당 행정사 플랫폼 GA4</div><button class="btn s sm" id="gaReplay" type="button">다시 재생</button></div><div class="leg" style="margin-top:12px"><span><i></i>9월</span><span><i class="on"></i>10월</span><span class="mono" id="gaMonth">9월</span></div>${R.map(r=>{const m=r[0]==='조회수'?2500:550,pc=((r[2]/r[1]-1)*100).toFixed(1);return `<div class="gr"><div class="gl">${r[0]}<em class="pc" data-pc="${pc}">+0.0%</em></div><div class="gbs"><div class="hr"><span class="track"><i class="fix" style="width:${(r[1]/m*100).toFixed(1)}%"></i></span><b>${r[1].toLocaleString()}</b></div><div class="hr"><span class="track"><i class="on ga-bar" style="width:${(r[2]/m*100).toFixed(1)}%;--from:${(r[1]/r[2]).toFixed(4)}"></i></span><b class="ga-num" data-a="${r[1]}" data-b="${r[2]}">${r[1].toLocaleString()}</b></div></div></div>`}).join('')}<p class="mono vn">조회수는 축 범위가 달라 따로 맞춤 · 10/15 급증 지점은 봇 유입 여부까지 점검</p></div>`},
+ video:()=>box('LangGraph 영상 제작 파이프라인',`<div class="fig pipefig"><svg id="pipeSvg" role="img" aria-label="노션 사용설명서 입력, 대본 작성, 읽기 규칙 적용, TTS, 영상 합성, 유튜브 업로드로 이어지는 파이프라인. 이용가이드 10편을 하루 만에 완성"></svg></div><div class="pout"><div class="eps2">${Array.from({length:10},(_,i)=>`<i style="--i:${i}">${i+1}</i>`).join('')}</div><p><b>10편</b> 하루 만에 완성 · 편당 약 20분</p></div>`),
+ donut:()=>box('블로그 유입 경로',`<div class="donut-row"><div class="donut"><span>86%</span></div><div class="leg" style="flex-direction:column;gap:8px;margin:0"><span><i class="on"></i>네이버 검색 86%</span><span><i></i>기타 14%</span></div></div><p class="vt2">독자별 콘텐츠</p>`+hbars([['외국인 체류 가이드',100,'100편+',1],['이용가이드 영상',10,'10편']],105),'독자 30–40대 중심 · 출처 네이버 블로그 통계')+`<div class="viz"><div class="vt">블로그 일 평균 조회수 · 2026.05–10</div><div class="fig"><svg id="blogSvg" role="img" aria-label="블로그 일 평균 조회수 추이"></svg></div></div>`,
+ partner:()=>box('가입 파트너 · 제안 변경 전월을 1로 둔 배수',`<div class="vb"><div><b>1</b><i style="height:4.5%"></i></div><div><b>20배+</b><i class="on" style="height:90%"></i></div></div><div class="vb-l mono"><span>변경 전월</span><span>변경 후</span></div><div class="ba">${[['이전','서비스 소개 위주의 제안','서비스를 소개하고 가입을 권했지만 반응이 거의 없음'],['변화','상대의 성장을 먼저 돕는 제안','커뮤니티 데이터로 찾은 고민에 맞춰 개업·마케팅 노하우 영상과 카드뉴스를 먼저 제공'],['이후','가입 파트너 20배 이상','전월 대비 20배 이상 증가']].map(b=>`<div><span class="mono">${b[0]}</span><div><b>${esc(b[1])}</b><span>${esc(b[2])}</span></div></div>`).join('')}</div>`),
+ movie:()=>box('분석 규모',hbars([['IMDB 영화 전체',14807,'14,807편',1],['OTT 순위 비교',1242,'1,242편']],15000)+`<p class="vt2">흥행 예측 모델 설명력 · XGBoost</p><div class="meter"><i style="width:66.4%"></i><span style="left:66.4%">R² 0.664</span></div><div class="scale mono"><span>0</span><span>0.5</span><span>1.0</span></div>`,'IMDB 2000–2020 · 캡스톤 프로젝트 6인 팀 PM')+box('흥행 신호 → 마케팅 적용',`<div class="sig">${[['개봉주 수익 쏠림','장기 흥행','down','런칭 직후 버스트보다 지속 유입·리텐션 설계'],['리뷰 수 · 관객 평점','흥행 가능성','up','리뷰·평점 같은 소셜 프루프 확보'],['OTT 장르 · 배우 친숙도','OTT 순위','up','채널별로 타깃과 소재를 다르게 설계']].map(r=>`<div class="sr"><div class="s1"><b>${r[0]}</b></div><div class="s2"><span class="dir ${r[2]}">${r[2]==='up'?'▲':'▼'}</span>${r[1]}</div><div class="s3">${r[3]}</div></div>`).join('')}</div>`,'세 가지 분석 질문에서 찾은 신호 · 방향만 표시'),
+ ssafy:()=>box('댓글 분석 처리 시간 · LangGraph 병렬 처리',hbars([['개선 전',60,'60초'],['병렬 처리 후',18,'18초',1]],60)+`<p class="vt2">요청 난이도별 모델 선택 · 비용 관리</p><div class="route"><div class="node">사용자 요청</div><span class="ar">→</span><div class="col"><div>쉬운 요청 · gpt-5-nano</div><div>어려운 요청 · gpt-5-mini</div></div></div>`,'Guardrail이 부적절한 요청을 모델 호출 전에 차단')+box('댓글 인사이트 서비스 구조',`<div class="fan"><div class="fn">회사명 입력</div><i class="fa"></i><div class="fn">커뮤니티 댓글 실시간 수집 · 전처리</div><i class="fa"></i><div class="fbw"><span class="fbl">LangGraph 병렬 실행</span><div class="fbr"><div class="fn on">분위기</div><div class="fn on">주요 화제</div><div class="fn on">한 줄 요약</div></div></div><i class="fa"></i><div class="fn out">투자자 반응 인사이트 화면</div></div>`,'토스증권 커뮤니티 댓글 · LLM 증강 요약')
+};
+const GH={0:['grp-work','실무 프로젝트','정책관측소 마케팅 · 2025.10–2026.07','나만의 행정사, 어드민 데스크 등 행정사 플랫폼의 콘텐츠·그로스·퍼포먼스 마케팅을 혼자 맡으며 진행한 프로젝트입니다.'],7:['grp-edu','학교·개인 프로젝트','숙명여자대학교 · 삼성 청년 SW·AI 아카데미(SSAFY)','대학 캡스톤 프로젝트와 SSAFY 교육 과정에서 진행한 분석·개발 프로젝트입니다.']};
+document.getElementById('pjList').innerHTML=P.map((p,i)=>(GH[i]?`<header class="pgh" id="${GH[i][0]}"><p class="pgk">${GH[i][2]}</p><h3>${GH[i][1]}</h3><p class="pgd">${GH[i][3]}</p></header>`:'')+`<article class="pj" id="${p.id}"><div>
+ <div class="meta"><span class="mono">프로젝트 ${n2(i)}</span><span class="mono">${esc(p.area)}</span></div>
+ <h3>${esc(p.title)}</h3><p class="desc">${esc(p.desc)}</p>
+ <div class="kv">${p.stats.map(s=>`<div><b>${esc(s[0])}</b><span>${esc(s[1])}</span></div>`).join('')}</div>
+ ${p.dl?`<dl>${p.dl.map(d=>`<dt>${esc(d[0])}</dt><dd>${esc(d[1])}</dd>`).join('')}</dl>`:''}
+ ${p.qa?`<div class="qa">${p.qa.map(q=>`<div>${esc(q[0])}<span>${esc(q[1])}</span></div>`).join('')}</div>`:''}
+ ${p.tags?`<p class="tags">${p.tags.map(esc).join(' · ')}</p>`:''}
+ <p class="learn"><small>배운 점</small>${esc(p.learn)}</p>
+
+</div><div>${V[p.viz]()}</div></article>`).join('');
+
+const RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
+const vizs=[...document.querySelectorAll('.viz')];
+vizs.forEach(v=>{if(!RM)v.classList.add('mv')});
+document.querySelectorAll('.cells i').forEach((c,i)=>c.style.transitionDelay=i*8+'ms');
+document.querySelectorAll('.eps i').forEach((c,i)=>c.style.transitionDelay=i*80+'ms');
+const ga=document.getElementById('gaViz'),gaNums=[...ga.querySelectorAll('.ga-num')],gaPc=[...ga.querySelectorAll('.pc')],gaM=document.getElementById('gaMonth');
+let gaT=[];
+const setNums=t=>{gaNums.forEach(b=>{const a=+b.dataset.a,c=+b.dataset.b;b.textContent=Math.round(a+(c-a)*t).toLocaleString()});gaPc.forEach(p=>p.textContent='+'+(p.dataset.pc*t).toFixed(1)+'%')};
+const playGa=()=>{gaT.forEach(clearTimeout);gaT=[];
+ if(RM){ga.classList.add('in','ga-go');setNums(1);gaM.textContent='10월';return}
+ ga.classList.remove('in','ga-go');setNums(0);gaM.textContent='9월';
+ gaT.push(setTimeout(()=>ga.classList.add('in'),60));
+ gaT.push(setTimeout(()=>{ga.classList.add('ga-go');gaM.textContent='10월';const t0=performance.now(),d=1400;
+  const step=now=>{const k=Math.max(0,Math.min(1,(now-t0)/d)),e=1-Math.pow(1-k,3);setNums(e);if(k<1)requestAnimationFrame(step)};requestAnimationFrame(step)},1100));
+};
+document.getElementById('gaReplay').addEventListener('click',playGa);
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(!e.isIntersecting)return;io.unobserve(e.target);if(e.target===ga)playGa();else e.target.classList.add('in')}),{threshold:.35});
+vizs.forEach(v=>io.observe(v));
+const jb=document.getElementById('journey');
+if(!matchMedia('(prefers-reduced-motion: reduce)').matches){jb.classList.add('mvj');jb.querySelectorAll('.seg').forEach((b,i)=>b.style.transitionDelay=i*220+'ms');jb.querySelectorAll('.mixd>div').forEach((b,i)=>b.style.transitionDelay=(450+i*220)+'ms');const jio=new IntersectionObserver(es=>{if(es[0].isIntersecting){jb.classList.add('in');jio.disconnect()}},{threshold:.25});jio.observe(jb)}
+
+const D=[['5월',92],['6월',184],['7월',1354],['8월',1848],['9월',1505],['10월',1080]];
+const css=n=>getComputedStyle(document.body).getPropertyValue(n).trim();
+function line(svg,anim){
+ const W=svg.clientWidth,H=svg.clientHeight;if(!W||!H)return;
+ const acc=css('--acc'),mute=css('--mute'),grid=css('--line'),ink=css('--ink'),card=css('--card');
+ const pl=36,pr=28,pt=30,pb=24,max=2000,gid=svg.id+'G';
+ const x=i=>pl+i*(W-pl-pr)/(D.length-1),y=v=>pt+(H-pt-pb)*(1-v/max);
+ const pts=D.map((d,i)=>[x(i),y(d[1])]);
+ const path=pts.map((p,i)=>(i?'L':'M')+p[0].toFixed(1)+' '+p[1].toFixed(1)).join(' ');
+ const area=path+` L${pts.at(-1)[0].toFixed(1)} ${y(0)} L${pts[0][0].toFixed(1)} ${y(0)} Z`;
+ const ticks=[0,1000,2000].map(v=>`<line x1="${pl}" x2="${W-pr}" y1="${y(v)}" y2="${y(v)}" stroke="${grid}"/><text x="${pl-8}" y="${y(v)+4}" text-anchor="end" font-size="11" font-family="IBM Plex Mono,monospace" fill="${mute}">${v?v/1000+'k':0}</text>`).join('');
+ const lbl=D.map((d,i)=>`<text x="${x(i)}" y="${H-4}" text-anchor="middle" font-size="11" font-family="IBM Plex Mono,monospace" fill="${mute}">${d[0]}</text>`).join('');
+ const narrow=W<380,dl=i=>(.25+i*.2).toFixed(2)+'s';
+ const val=D.map((d,i)=>(narrow&&i!==0&&i!==3)?'':`<text class="lc-v" style="animation-delay:${dl(i)}" x="${x(i)}" y="${y(d[1])-12}" text-anchor="middle" font-size="${i===3?13:12}" font-weight="${i===3?600:400}" font-family="IBM Plex Mono,monospace" fill="${i===3?ink:mute}">${d[1].toLocaleString()}</text>`).join('');
+ const dots=pts.map((p,i)=>`<circle class="lc-d" style="animation-delay:${dl(i)}" cx="${p[0]}" cy="${p[1]}" r="${i===3?5:3.5}" fill="${i===3?acc:card}" stroke="${acc}" stroke-width="2"/>`).join('');
+ const pk=pts[3],ring=`<circle class="lc-r" style="animation-delay:${dl(3)}" cx="${pk[0]}" cy="${pk[1]}" r="12" fill="none" stroke="${acc}" stroke-width="1.5"/>`;
+ svg.innerHTML=`<defs><linearGradient id="${gid}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${acc}" stop-opacity=".22"/><stop offset="1" stop-color="${acc}" stop-opacity="0"/></linearGradient></defs>${ticks}<path class="lc-a" d="${area}" fill="url(#${gid})"/><path class="lc-l" d="${path}" fill="none" stroke="${acc}" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>${ring}${dots}${val}${lbl}`;
+ const l=svg.querySelector('.lc-l');const len=l.getTotalLength();l.style.setProperty('--len',len);l.style.strokeDasharray=len;
+ svg.classList.toggle('lc-anim',!!anim);
+}
+const FN=[['src1','법령정보 API','법령·시행규칙'],['src2','네이버 뉴스 API','정책·업계 뉴스'],['sel','선별·요약','Claude · Notion'],['rep','주간 트렌드 리포트','주 1회 · 월 4–5회',1],['seo','검색 유입 증가','SEO'],['join','회원가입 전환','행정사 회원',1]];
+const FL=[['src1','sel'],['src2','sel'],['sel','rep'],['rep','seo'],['seo','join']];
+const fs=document.getElementById('flowSvg');
+function drawFlow(){const W=fs.clientWidth;if(!W)return;
+ const acc=css('--acc'),ink=css('--ink'),sub=css('--sub'),line=css('--line'),card=css('--card'),raised=css('--raised'),bar=css('--bar');
+ const RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
+ const v=W<520,P={},g=v?48:52;
+ if(!v){const cw=(W-3*g)/4,nh=60,x=i=>i*(cw+g),H=200,mid=H/2;
+  P.src1=[x(0),mid-nh-12,cw,nh];P.src2=[x(0),mid+12,cw,nh];P.sel=[x(1),mid-nh/2,cw,nh];P.rep=[x(2),mid-nh/2-6,cw,nh+12];P.seo=[x(3),mid-nh-12,cw,nh];P.join=[x(3),mid+12,cw,nh];P.H=H;}
+ else{const nh=52,hw=(W-32)/2,cx=W*.12,cwid=W*.76;let y=0;
+  P.src1=[0,y,hw,nh];P.src2=[hw+32,y,hw,nh];y+=nh+g;P.sel=[cx,y,cwid,nh];y+=nh+g;P.rep=[cx,y,cwid,nh+8];y+=nh+8+g;P.seo=[0,y,hw,nh];P.join=[hw+32,y,hw,nh];P.H=y+nh+2;}
+ fs.parentElement.style.minHeight=P.H+'px';
+ const T=k=>{const[a,b,c,d]=P[k];return{l:a,r:a+c,t:b,b:b+d,cx:a+c/2,cy:b+d/2}};
+ const gap=3,r=8;
+ // orthogonal path with rounded corners through points
+ const ortho=pts=>{let d=`M${pts[0][0]} ${pts[0][1]}`;for(let i=1;i<pts.length-1;i++){const[p0,p1,p2]=[pts[i-1],pts[i],pts[i+1]];
+   const d1=Math.hypot(p1[0]-p0[0],p1[1]-p0[1]),d2=Math.hypot(p2[0]-p1[0],p2[1]-p1[1]),rr=Math.min(r,d1/2,d2/2);
+   const a=[p1[0]-(p1[0]-p0[0])/d1*rr,p1[1]-(p1[1]-p0[1])/d1*rr],b=[p1[0]+(p2[0]-p1[0])/d2*rr,p1[1]+(p2[1]-p1[1])/d2*rr];
+   d+=` L${a[0]} ${a[1]} Q${p1[0]} ${p1[1]} ${b[0]} ${b[1]}`}const e=pts.at(-1);return d+` L${e[0]} ${e[1]}`};
+ const L=[];
+ if(v){const s1=T('src1'),s2=T('src2'),se=T('sel'),re=T('rep'),so=T('seo'),jo=T('join'),my=(s1.b+se.t)/2;
+  L.push([ortho([[s1.cx,s1.b+gap],[s1.cx,my],[se.cx,my],[se.cx,se.t-gap]]),0,0]);
+  L.push([ortho([[s2.cx,s2.b+gap],[s2.cx,my],[se.cx,my],[se.cx,se.t-gap]]),0,1]);
+  L.push([`M${se.cx} ${se.b+gap} L${re.cx} ${re.t-gap}`,1,1]);
+  const my2=(re.b+so.t)/2;L.push([ortho([[re.cx,re.b+gap],[re.cx,my2],[so.cx,my2],[so.cx,so.t-gap]]),1,1]);
+  L.push([`M${so.r+gap} ${so.cy} L${jo.l-gap} ${jo.cy}`,1,1]);}
+ else{const s1=T('src1'),s2=T('src2'),se=T('sel'),re=T('rep'),so=T('seo'),jo=T('join'),mx=(s1.r+se.l)/2,mx2=(re.r+so.l)/2;
+  L.push([ortho([[s1.r+gap,s1.cy],[mx,s1.cy],[mx,se.cy],[se.l-gap,se.cy]]),0,0]);
+  L.push([ortho([[s2.r+gap,s2.cy],[mx,s2.cy],[mx,se.cy],[se.l-gap,se.cy]]),0,1]);
+  L.push([`M${se.r+gap} ${se.cy} L${re.l-gap} ${re.cy}`,1,1]);
+  L.push([ortho([[re.r+gap,re.cy],[mx2,re.cy],[mx2,so.cy],[so.l-gap,so.cy]]),1,1]);
+  L.push([`M${so.cx} ${so.b+gap} L${jo.cx} ${jo.t-gap}`,1,1]);}
+ const defs=`<defs><marker id="ahA" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M1 1 L9 5 L1 9 Z" fill="${acc}"/></marker><marker id="ahN" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M1 1 L9 5 L1 9 Z" fill="${sub}"/></marker></defs>`;
+ const links=L.map((l,i)=>{const on=l[1],c=on?acc:sub,arrow=l[2];return `<path id="fp${i}" d="${l[0]}" fill="none" stroke="${on?acc:bar}" stroke-width="${on?2:1.5}" stroke-linejoin="round" ${arrow?`marker-end="url(#${on?'ahA':'ahN'})"`:''}/>`+(RM?'':`<circle r="3" fill="${c}"><animateMotion dur="${on?1.6:2.2}s" begin="${i*0.25}s" repeatCount="indefinite" keyPoints="0;1" keyTimes="0;1" calcMode="linear"><mpath href="#fp${i}"/></animateMotion></circle>`)}).join('');
+ const nodes=FN.map(n=>{const[x,y,w,h]=P[n[0]],hl=n[3];return `<g><rect x="${x+.5}" y="${y+.5}" width="${w-1}" height="${h-1}" rx="10" fill="${hl?acc:raised}" stroke="${hl?acc:line}"/><text x="${x+w/2}" y="${y+h/2-3}" text-anchor="middle" font-size="${v?13:14}" font-weight="500" fill="${hl?card:ink}">${esc(n[1])}</text><text x="${x+w/2}" y="${y+h/2+15}" text-anchor="middle" font-size="12" fill="${hl?card:sub}" opacity="${hl?.85:1}">${esc(n[2])}</text></g>`}).join('');
+ fs.innerHTML=defs+links+nodes}
+const PN=[['입력','노션 사용설명서'],['대본','편별 내레이션'],['읽기 규칙','E-9 → 이 나인'],['TTS','대본 → 음성'],['합성','화면 + 음성'],['업로드','유튜브 시리즈']];
+const ps=document.getElementById('pipeSvg');
+function drawPipe(){const W=ps.clientWidth;if(!W)return;
+ const acc=css('--acc'),ink=css('--ink'),sub=css('--sub'),line=css('--line'),raised=css('--raised'),card=css('--card'),bar=css('--bar'),mute=css('--mute');
+ const RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
+ const narrow=W<420,nh=54,P=[];let pathD='',H;
+ if(!narrow){const cols=3,gx=28,nw=(W-gx*(cols-1)-16)/cols,top=28,rowGap=56,x0=8;
+  for(let i=0;i<6;i++){const r=Math.floor(i/3),c=r?2-(i%3):i%3;P.push([x0+c*(nw+gx),top+r*(nh+rowGap),nw,nh])}
+  const cy0=top+nh/2,cy1=top+nh+rowGap+nh/2,xr=W-4,xs=0;
+  pathD=`M${xs} ${cy0} L${xr-24} ${cy0} Q${xr} ${cy0} ${xr} ${cy0+24} L${xr} ${cy1-24} Q${xr} ${cy1} ${xr-24} ${cy1} L${xs} ${cy1}`;
+  H=cy1+nh/2+30}
+ else{const nw=W*.8,x=(W-nw)/2,g=26;for(let i=0;i<6;i++)P.push([x,22+i*(nh+g),nw,nh]);pathD=`M${W/2} 0 L${W/2} ${22+6*(nh+g)}`;H=22+6*(nh+g)-g+22}
+ ps.parentElement.style.minHeight=H+'px';
+ const pipe=`<path d="${pathD}" fill="none" stroke="${bar}" stroke-width="10" stroke-linecap="round" stroke-linejoin="round" opacity=".55"/><path id="pipeP" d="${pathD}" fill="none" stroke="${acc}" stroke-width="2" stroke-linecap="round" stroke-dasharray="1 9" opacity=".7"/>`;
+ const lbl=narrow?`<text x="${W/2+8}" y="12" font-size="11" fill="${mute}" font-family="IBM Plex Mono,monospace">START</text><text x="${W/2+8}" y="${H-4}" font-size="11" fill="${mute}" font-family="IBM Plex Mono,monospace">END</text>`
+  :`<text x="8" y="14" font-size="11" fill="${mute}" font-family="IBM Plex Mono,monospace">START →</text><text x="8" y="${H-2}" font-size="11" fill="${mute}" font-family="IBM Plex Mono,monospace">← END · 유튜브</text>`;
+ const pk=RM?'':Array.from({length:10},(_,i)=>`<circle r="4.5" fill="${acc}" stroke="${card}" stroke-width="2" opacity="0"><animateMotion dur="3.6s" begin="${(i*.35).toFixed(2)}s;pk${i}.end+0.4s" id="pk${i}" fill="freeze" calcMode="linear"><mpath href="#pipeP"/></animateMotion><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;.05;.92;1" dur="3.6s" begin="${(i*.35).toFixed(2)}s;pk${i}.end+0.4s"/></circle>`).join('');
+ const nodes=P.map((p,i)=>{const[x,y,w,h]=p,last=i===5;return `<g><rect x="${x}" y="${y}" width="${w}" height="${h}" rx="10" fill="${last?acc:card}" stroke="${last?acc:line}" stroke-width="1.5"/><text x="${x+12}" y="${y+18}" font-size="10" fill="${last?card:mute}" font-family="IBM Plex Mono,monospace">${String(i+1).padStart(2,'0')}</text><text x="${x+w/2}" y="${y+h/2+2}" text-anchor="middle" font-size="14" font-weight="500" fill="${last?card:ink}">${esc(PN[i][0])}</text><text x="${x+w/2}" y="${y+h/2+19}" text-anchor="middle" font-size="11.5" fill="${last?card:sub}" opacity="${last?.85:1}">${esc(PN[i][1])}</text></g>`}).join('');
+ ps.innerHTML=pipe+pk+nodes+lbl}
+const roP=new ResizeObserver(drawPipe);roP.observe(ps);
+const moP=new MutationObserver(drawPipe);moP.observe(document.documentElement,{attributes:true,attributeFilter:['data-theme']});
+try{matchMedia('(prefers-color-scheme: dark)').addEventListener('change',drawPipe)}catch(e){}
+const roF=new ResizeObserver(drawFlow);roF.observe(fs);
+const moF=new MutationObserver(drawFlow);moF.observe(document.documentElement,{attributes:true,attributeFilter:['data-theme']});
+try{matchMedia('(prefers-color-scheme: dark)').addEventListener('change',drawFlow)}catch(e){}
+const cntEl=document.getElementById('cntN');let cntDone=false;
+const cio=new IntersectionObserver(es=>{if(!es[0].isIntersecting||cntDone)return;cntDone=true;cio.disconnect();
+ if(matchMedia('(prefers-reduced-motion: reduce)').matches){cntEl.textContent='100+';return}
+ const t0=performance.now(),d=1400;const st=n=>{const k=Math.max(0,Math.min(1,(n-t0)/d)),e=1-Math.pow(1-k,3);cntEl.textContent=Math.round(100*e)+(k>=1?'+':'');if(k<1)requestAnimationFrame(st)};requestAnimationFrame(st)},{threshold:.4});
+cio.observe(cntEl);
+const hs=document.getElementById('heroSvg'),bs=document.getElementById('blogSvg');
+let heroPlayed=false;hs.classList.add('lc-wait');
+const drawHero=()=>{line(hs,!heroPlayed||hs.classList.contains('lc-wait'))};
+const hio=new IntersectionObserver(es=>{if(es[0].isIntersecting){hio.disconnect();line(hs,true);hs.classList.remove('lc-wait');setTimeout(()=>{heroPlayed=true},2600)}},{threshold:.45});hio.observe(hs);
+let blogPlayed=false;bs.classList.add('lc-wait');const drawBlog=()=>line(bs,!blogPlayed);const bio=new IntersectionObserver(es=>{if(es[0].isIntersecting){bio.disconnect();line(bs,true);bs.classList.remove('lc-wait');setTimeout(()=>{blogPlayed=true},2600)}},{threshold:.45});bio.observe(bs);
+const roH=new ResizeObserver(drawHero);roH.observe(hs);
+const roB=new ResizeObserver(drawBlog);roB.observe(bs);
+const redraw=()=>{drawHero();drawBlog()};
+const moT=new MutationObserver(redraw);moT.observe(document.documentElement,{attributes:true,attributeFilter:['data-theme']});
+try{matchMedia('(prefers-color-scheme: dark)').addEventListener('change',redraw)}catch(e){}
+
+const cb=document.getElementById('copyBtn');
+cb.addEventListener('click',async()=>{try{await navigator.clipboard.writeText('susiejaneiris@gmail.com');cb.textContent='복사했어요'}catch(e){cb.textContent='susiejaneiris@gmail.com'}setTimeout(()=>cb.textContent='이메일 복사',2000)});
+
+const RMm=matchMedia('(prefers-reduced-motion: reduce)').matches;
+// reveal: fade / slide / stagger
+const tag=(sel,kind,step)=>document.querySelectorAll(sel).forEach(el=>{const kids=step?[...el.children]:[el];kids.forEach((k,i)=>{if(k.hasAttribute('data-rv'))return;k.setAttribute('data-rv',kind);if(step)k.style.setProperty('--d',i*step+'ms')})});
+tag('section h2','left');tag('section .lead','up');
+tag('.bhead','up');
+tag('.sgrid','up',120);tag('.index','left',45);
+tag('.pj>div:last-child','right');
+tag('.cols3','up',120);tag('.vgrid','up',140);tag('.cbox','up');
+const rvs=[...document.querySelectorAll('[data-rv]')];
+if(RMm){rvs.forEach(e=>e.classList.add('shown'))}else{
+ let qT=0;const rio=new IntersectionObserver(es=>{const vis=es.filter(e=>e.isIntersecting).sort((a,b)=>a.boundingClientRect.top-b.boundingClientRect.top||a.boundingClientRect.left-b.boundingClientRect.left);const now=performance.now();let base=Math.max(0,qT-now);vis.forEach(e=>{rio.unobserve(e.target);const el=e.target;setTimeout(()=>el.classList.add("shown"),base);base+=90});qT=now+base},{threshold:.2,rootMargin:'0px 0px -14% 0px'});
+ rvs.forEach(e=>rio.observe(e))}
+// count-up
+const cnums=[...document.querySelectorAll('.snum,.kv b')].filter(el=>{const m=el.textContent.match(/\d[\d,]*(\.\d+)?/g);return m&&m.length===1&&!/[²–]/.test(el.textContent)});
+const runCount=el=>{const html=el.innerHTML,txt=el.textContent,m=txt.match(/\d[\d,]*(\.\d+)?/)[0],tgt=parseFloat(m.replace(/,/g,'')),dec=(m.split('.')[1]||'').length,comma=m.includes(',')||tgt>=1000;
+ const fmt=v=>{let s=v.toFixed(dec);if(comma){const[a,b]=s.split('.');s=Number(a).toLocaleString('en-US')+(b?'.'+b:'')}return s};
+ const walk=n=>{for(const c of n.childNodes){if(c.nodeType===3&&c.textContent.includes(m))return c;if(c.nodeType===1){const r=walk(c);if(r)return r}}};const node=walk(el);if(!node)return;
+ const t0=performance.now(),d=1300;const re=/-?\d[\d,]*(\.\d+)?/;const st=now=>{const k=Math.max(0,Math.min(1,(now-t0)/d)),e=1-Math.pow(1-k,4);node.textContent=node.textContent.replace(re,fmt(Math.max(0,tgt*e)));if(k<1)requestAnimationFrame(st);else node.textContent=node.textContent.replace(re,m)};
+ node.textContent=node.textContent.replace(m,fmt(0));requestAnimationFrame(st)};
+if(!RMm){const cio2=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){cio2.unobserve(e.target);setTimeout(()=>runCount(e.target),150)}}),{threshold:.6});cnums.forEach(e=>cio2.observe(e))}
+// parallax on portrait
+const pimg=document.querySelector('.pimg'),cov=document.querySelector('.cover');
+if(false&&pimg){let tk=false;const px=()=>{tk=false;if(innerWidth<600){pimg.style.setProperty('--py','0px');return}const r=cov.getBoundingClientRect(),p=Math.max(-1,Math.min(1,-r.top/Math.max(1,r.height)));pimg.style.setProperty('--py',(p*-28).toFixed(1)+'px')};addEventListener('scroll',()=>{if(!tk){tk=true;requestAnimationFrame(px)}},{passive:true});px()}
+
+// views: main (list only) / projects (all projects)
+const IDS=P.map(p=>p.id);
+const setView=()=>{const h=location.hash.slice(1),proj=h==='projects'||(document.body.dataset.view==='projects'&&IDS.concat(['grp-work','grp-edu']).includes(h));
+ document.body.dataset.view=proj?'projects':'main';
+ document.querySelectorAll('.index a').forEach(a=>a.classList.toggle('cur',a.getAttribute('href')==='#'+h));
+ const t=h&&document.getElementById(h);
+ requestAnimationFrame(()=>{if(t)t.scrollIntoView({behavior:'auto',block:'start'});else if(!h)scrollTo(0,0)})};
+addEventListener('hashchange',setView);setView();
+
+}
+</script>
+</body>
+</html>
